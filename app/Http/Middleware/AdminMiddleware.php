@@ -32,32 +32,7 @@ class AdminMiddleware
         }
 
         return $next($request);
-        /*public function handle(Request $request, Closure $next)
-        {
-            // Check if the middleware is being executed
-            dd('AdminMiddleware is running');
-
-            if (Auth::check()) {
-                // Check if the user is authenticated
-                dd('User is authenticated');
-
-                if (Auth::user()->user_role === 'admin') {
-                    // Check if the user has the 'admin' role
-                    dd('User has admin role');
-                    return $next($request);
-                } else {
-                    // Check if the user does not have the 'admin' role
-                    dd('User does not have admin role');
-                    return redirect('/')->with('message', 'Access Denied as you are not Admin');
-                }
-            } else {
-                // Check if there is no authenticated user
-                dd('User is not authenticated');
-                return redirect('/')->with('message', 'Login to access the website');
-            }
-        }*/
-
-       
+    
     
     }
 }
