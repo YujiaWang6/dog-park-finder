@@ -13,11 +13,13 @@
 <body>
     <header class="w3-padding">
         <?php if(Auth::check()): ?>
-            You are logged in as
-            <?= auth()->user()->user_name ?> |
-            <a href="/console/logout">Logout</a> |
-            <a href="/console/dashboard">Dashboard</a> |
-            <a href="/">Website Home Page</a>
+                    <p class="h4">
+                        You are logged in as
+                        <?= auth()->user()->user_name ?>
+                    </p>
+                    <a href="/" class="btn btn-outline-info">Home Page</a>
+                    <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
+                    <a href="/console/logout" class="btn btn-outline-info">Logout</a>
         <?php else: ?>
             <span >
                 <a href="/" class="btn btn-outline-info">Back to Home Page</a>
