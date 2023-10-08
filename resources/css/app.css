@@ -1,0 +1,8 @@
+/* -- ERROR MESSAGE TEXT COLOR -- */
+.errorText{
+    color:red !important;
+}
+
+html{
+    background-color: black;
+}

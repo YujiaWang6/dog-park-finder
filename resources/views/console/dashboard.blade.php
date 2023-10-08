@@ -7,29 +7,43 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="/app.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="/app.js"></script>
 </head>
 <body>
     <header class="w3-padding">
-        <h1 class="w3-text-red">Products CMS Dashboard</h1>
         <?php if(Auth::check()): ?>
-            You are logged in as
-            <?= auth()->user()->user_name ?> |
-            <a href="/console/logout">Logout</a> |
-            <a href="/console/dashboard">Dashboard</a> |
-            <a href="/">Website Home Page</a>
+                    <p class="h4">
+                        You are logged in as
+                        <?= auth()->user()->user_name ?>
+                    </p>
+                    <a href="/" class="btn btn-outline-info">Home Page</a>
+                    <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
+                    <a href="/console/logout" class="btn btn-outline-info">Logout</a>
         <?php else: ?>
-            <a href="/">Return to Products Page</a>
+            <span >
+                <a href="/" class="btn btn-outline-info">Back to Home Page</a>
+            </span>
         <?php endif; ?>
     </header>
 
 
-    <section class="w3-padding">
-        <ul id="dashboard">
-            <li><a href="/console/products/list">Manage Products</a></li>
-            <li><a href="/console/brands/list">Manage Brands</a></li>
-            <li><a href="/console/categories/list">Manage Categories</a></li>
-        </ul>
+    <section class="container-sm">
+        <h1 class="h1 text-center">Dog Park Finder CMS Dashboard</h1>
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                <a href="/console/users/list" class="btn btn-success">Manage Users</a>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                <a href="/console/parks/list" class="btn btn-success">Manage Parks</a>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                <a href="/console/reviews/list" class="btn btn-success">Manage Reviews</a>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                <a href="/console/reports/list" class="btn btn-success">Manage Reports</a>
+            </div>
+        </div> 
     </section>
     
 </body>
