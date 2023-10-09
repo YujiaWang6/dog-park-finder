@@ -59,8 +59,8 @@
                             <td><?= $review->park->park_name?></td>
                             <td><?= $review->mark?></td>
                             <td><?= $review->description?></td>
-                            <td><a href="/console/parks/edit/<?= $review->id?>">Modify</a></td>
-                            <td><a href="/console/parks/delete/<?= $review->id?>">Delete</a></td>
+                            <td><a href="/console/reviews/edit/<?= $review->id?>">Modify</a></td>
+                            <td><a href="/console/reviews/delete/<?= $review->id?>">Delete</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

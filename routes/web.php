@@ -45,3 +45,7 @@ Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm']
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
 
 Route::get('/console/reviews/list', [ReviewsController::class, 'list'])->middleware(['auth', 'isadmin']);
+Route::get('/console/reviews/delete/{review:id}', [ReviewsController::class, 'deleteConfirm'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::post('/console/reviews/deleted/{review:id}', [ReviewsController::class, 'deleted'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::get('/console/reviews/add', [ReviewsController::class, 'addForm'])->middleware(['auth', 'isadmin']);
+Route::post('/console/reviews/add', [ReviewsController::class, 'add'])->middleware(['auth', 'isadmin']);
