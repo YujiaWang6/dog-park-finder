@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ParksController;
+use App\Http\Controllers\UsersController;
 
 use App\Http\Middleware\AdminMiddleware;
 /*
@@ -33,3 +34,11 @@ Route::get('/console/parks/add', [ParksController::class, 'addForm'])->middlewar
 Route::post('/console/parks/add', [ParksController::class, 'add'])->middleware(['auth', 'isadmin']);
 Route::get('/console/parks/edit/{park:id}', [ParksController::class, 'editForm'])->where('park', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::post('/console/parks/edit/{park:id}', [ParksController::class, 'edit'])->where('park', '[0-9]+')->middleware(['auth', 'isadmin']);
+
+Route::get('/console/users/list', [UsersController::class, 'list'])->middleware(['auth', 'isadmin']);
+Route::get('/console/users/delete/{user:id}', [UsersController::class, 'deleteConfirm'])->where('user', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::post('/console/users/deleted/{user:id}', [UsersController::class, 'deleted'])->where('user', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::get('/console/users/add', [UsersController::class, 'addFrom'])->middleware(['auth', 'isadmin']);
+Route::post('/console/users/add', [UsersController::class, 'add'])->middleware(['auth','isadmin']);
+Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
+Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
