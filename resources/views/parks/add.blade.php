@@ -28,6 +28,7 @@
     </header>
 
     <section class="container-sm">
+        <a href="/console/parks/list">Back to Parks List</a>
         <h1 class="h1">Create a New Park</h1>
         <form method="post" action="/console/parks/add" novalidation>
             <?= csrf_field()?>

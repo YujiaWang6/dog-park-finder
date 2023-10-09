@@ -28,6 +28,7 @@
     </header>
 
     <section>
+        <a href="/console/parks/list">Back to Parks List</a>
         <h1>Are you sure you want to delete <?= $park->park_name?></h1>
         <form method="post" action="/console/parks/deleted/<?= $park->id?>" novalidate>
             <?= csrf_field()?>

@@ -28,8 +28,8 @@
     </header>
 
     <section class="container-sm">
-        <h1 class="h1">Update <?= $park->park_name?></h1>
         <a href="/console/parks/list">Back to Parks List</a>
+        <h1 class="h1">Update <?= $park->park_name?></h1>
         <form method="post" action="/console/parks/edit/<?= $park->id?>" novalidation>
             <?= csrf_field()?>
             <div class="mb-3">
