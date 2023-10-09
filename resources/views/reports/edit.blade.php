@@ -28,16 +28,16 @@
     </header>
 
     <section class="container-sm">
-        <a href="/console/reviews/list">Back to Reviews List</a>
-        <h1 class="h1">Update the Review for <?= $review->park->park_name?></h1>
-        <form method="post" action="/console/reviews/edit/<?= $review->id?>" novalidation>
+        <a href="/console/reports/list">Back to Reports List</a>
+        <h1 class="h1">Update the Report for <?= $report->park->park_name?></h1>
+        <form method="post" action="/console/reports/edit/<?= $report->id?>" novalidation>
             <?= csrf_field()?>
             <div class="mb-3">
                 <label for="user_id" class="form-label">User<sup>*</sup>:</label>
                 <select name="user_id" id="user_id" class="form-control">
                     <option disabled selected>Select the User</option>
                     <?php foreach($users as $user): ?>
-                        <option value="<?= $user->id?>" <?= $user->id == old('user_id', $review->user_id) ? 'selected' : ''?>>
+                        <option value="<?= $user->id?>" <?= $user->id == old('user_id', $report->user_id) ? 'selected' : ''?>>
                             <?= $user->user_name?>
                         </option>
                     <?php endforeach; ?>
@@ -55,7 +55,7 @@
                 <select name="park_id" id="park_id" class="form-control">
                     <option disabled selected>Select the Park</option>
                     <?php foreach($parks as $park): ?>
-                        <option value="<?= $park->id?>" <?= $park->id == old('park_id', $review->park_id) ? 'selected' : ''?>>
+                        <option value="<?= $park->id?>" <?= $park->id == old('park_id', $report->park_id) ? 'selected' : ''?>>
                             <?= $park->park_name?>
                         </option>
                     <?php endforeach; ?>
@@ -70,23 +70,12 @@
             </div>
 
             <div class="mb-3">
-                <label for="mark" class="form-label">Mark<sup>*</sup>:</label>
-                <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark', $review->mark)?>" min="1" max="5">
+                <label for="report" class="form-label">Report<sup>*</sup>:</label>
+                <textarea name="report" id="report" class="form-control"><?= old('report', $report->report) ?></textarea>
 
-                <?php if($errors->first('mark')):?>
+                <?php if($errors->first('report')):?>
                     <span class="form-text w3-text-red">
-                        <?= $errors->first('mark');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Review:</label>
-                <textarea name="description" id="description" class="form-control"><?=old('description', $review->description)?></textarea>
-
-                <?php if($errors->first('description')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('description');?>
+                        <?= $errors->first('report');?>
                     </span>
                 <?php endif;?>
 

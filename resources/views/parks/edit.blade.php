@@ -68,7 +68,7 @@
             </div>
             <div class="mb-3">
                 <label for="information" class="form-label">Information:</label>
-                <input type="text" name="information" id="information" class="form-control" value="<?=old('information', $park->information)?>">
+                <textarea name="information" id="information" class="form-control"><?=old('information', $park->information)?></textarea>
 
                 <?php if($errors->first('information')):?>
                     <span class="form-text w3-text-red">

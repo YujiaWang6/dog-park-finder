@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ParksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\ReportsController;
 
 use App\Http\Middleware\AdminMiddleware;
 /*
@@ -51,3 +52,11 @@ Route::get('/console/reviews/add', [ReviewsController::class, 'addForm'])->middl
 Route::post('/console/reviews/add', [ReviewsController::class, 'add'])->middleware(['auth', 'isadmin']);
 Route::get('/console/reviews/edit/{review:id}', [ReviewsController::class, 'editForm'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
 Route::post('/console/reviews/edit/{review:id}', [ReviewsController::class, 'edit'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
+
+Route::get('/console/reports/list', [ReportsController::class, 'list'])->middleware(['auth', 'isadmin']);
+Route::get('/console/reports/delete/{report:id}', [ReportsController::class, 'deleteConfirm'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::post('/console/reports/deleted/{report:id}', [ReportsController::class, 'deleted'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::get('/console/reports/add', [ReportsController::class, 'addForm'])->middleware(['auth', 'isadmin']);
+Route::post('/console/reports/add', [ReportsController::class, 'add'])->middleware(['auth', 'isadmin']);
+Route::get('/console/reports/edit/{report:id}', [ReportsController::class, 'editForm'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
+Route::post('/console/reports/edit/{report:id}', [ReportsController::class, 'edit'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);

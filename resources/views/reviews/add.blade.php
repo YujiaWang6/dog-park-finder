@@ -55,7 +55,7 @@
                 <select name="park_id" id="park_id" class="form-control">
                     <option disabled selected>Select the Park</option>
                     <?php foreach($parks as $park): ?>
-                        <option value="<?= $park->id?>" <?= $park->id == old('park_name') ? 'selected' : ''?>>
+                        <option value="<?= $park->id?>" <?= $park->id == old('park_id') ? 'selected' : ''?>>
                             <?= $park->park_name?>
                         </option>
                     <?php endforeach; ?>
@@ -82,7 +82,7 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Review:</label>
-                <input type="text" name="description" id="description" class="form-control" value="<?=old('description')?>">
+                <textarea name="description" id="description" class="form-control"><?=old('description')?></textarea>
 
                 <?php if($errors->first('description')):?>
                     <span class="form-text w3-text-red">
