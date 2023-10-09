@@ -112,7 +112,12 @@
 
                     </div>
                 <?php endif; ?>
-                <button type="submit" class="btn btn-primary">Create</button>
+
+                <?php if(Auth::check() && auth()->user()->user_role === 'admin'):?>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                <?php else:?>
+                    <button type="submit" class="btn btn-primary">Create an Account</button>
+                <?php endif; ?>
 
             </form>
         <?php else:?>
