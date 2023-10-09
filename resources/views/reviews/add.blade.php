@@ -70,7 +70,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="mark" class="form-label">Mark<sup>*</sup>:</label>
+                <label for="mark" class="form-label">Rate<sup>*</sup>:</label>
                 <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark')?>" min="1" max="5">
 
                 <?php if($errors->first('mark')):?>

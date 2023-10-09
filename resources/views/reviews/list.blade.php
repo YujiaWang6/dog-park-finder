@@ -45,7 +45,7 @@
                         <th></th>
                         <th>User</th>
                         <th>Park</th>
-                        <th>Mark</th>
+                        <th>Rate</th>
                         <th>Review</th>
                         <th></th>
                         <th></th>
