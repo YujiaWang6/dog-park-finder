@@ -27,37 +27,14 @@
         <?php endif; ?>
     </header>
 
-    <section class="container-sm">
-        <h1 class="h1">Dog Park Finder Login</h1>
-        <form method="post" action="/console/login" novalidation>
+    <section>
+        <h1>Are you sure you want to delete <?= $park->park_name?></h1>
+        <form method="post" action="/console/parks/deleted/<?= $park->id?>" novalidate>
             <?= csrf_field()?>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email Address:</label>
-                <input type="email" name="email" id="email" class="form-control" value="<?=old('email')?>">
-
-                <?php if($errors->first('email')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('email');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" name="password" id="password" class="form-control">
-
-                <?php if($errors->first('password')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('password');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <button type="submit" class="btn btn-primary">Log In</button>
-
+            <button type="submit">Confirm</button>
+            <a href="/console/parks/list">Cancel</a>
         </form>
-
     </section>
-    
+        
 </body>
 </html>
