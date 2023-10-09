@@ -24,6 +24,10 @@ class ParksController extends Controller
 
     public function deleted(Park $park)
     {
+        $park->reviews()->delete();
+
+        $park->reports()->delete();
+
         $park->delete();
 
         return redirect('/console/parks/list')

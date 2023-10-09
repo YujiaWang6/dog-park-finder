@@ -29,6 +29,10 @@ class UsersController extends Controller
                 ->with('message', 'Cannot delete your own user account');
         }
 
+        $user->reviews()->delete();
+
+        $user->reports()->delete();
+
         $user->delete();
         
         return redirect('/console/users/list')

@@ -18,4 +18,12 @@ class Park extends Model
         'longitude',
         'city',
     ];
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function reports(){
+        return $this->hasMany(Report::class);
+    }
 }

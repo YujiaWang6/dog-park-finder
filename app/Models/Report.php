@@ -16,10 +16,10 @@ class Report extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function park(){
-        return $this->belongsTo(Park::class, 'park_id');
+        return $this->belongsTo(Park::class);
     }
 }

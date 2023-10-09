@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ParksController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReviewsController;
 
 use App\Http\Middleware\AdminMiddleware;
 /*
@@ -42,3 +43,5 @@ Route::get('/console/users/add', [UsersController::class, 'addFrom'])->middlewar
 Route::post('/console/users/add', [UsersController::class, 'add'])->middleware(['auth','isadmin']);
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
+
+Route::get('/console/reviews/list', [ReviewsController::class, 'list'])->middleware(['auth', 'isadmin']);

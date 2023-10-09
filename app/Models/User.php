@@ -49,4 +49,12 @@ class User extends Authenticatable
     /*protected $attributes = [
         'user_role' => 'user',
     ];*/
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function reports(){
+        return $this->hasMany(Report::class);
+    }
 }
