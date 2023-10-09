@@ -58,4 +58,32 @@ class ReviewsController extends Controller
         return redirect('/console/reviews/list')
             ->with('message', 'review for ' . $review->park->park_name . ' has been created');
     }
+
+    public function editForm(Review $review)
+    {
+        return view('reviews.edit', [
+            'review' => $review,
+            'users' => User::all(),
+            'parks' => Park::all(),
+        ]);
+    }
+
+    public function edit(Review $review)
+    {
+        $attributes = request()->validate([
+            'user_id' => 'required',
+            'park_id' => 'required',
+            'mark' => 'required',
+            'description' => 'nullable',
+        ]);
+
+        $review->user_id = $attributes['user_id'];
+        $review->park_id = $attributes['park_id'];
+        $review->mark = $attributes['mark'];
+        $review->description = $attributes['description'];
+        $review->save();
+
+        return redirect('/console/reviews/list')
+            ->with('message', 'review for ' . $review->park->park_name . ' has been updated');
+    }
 }

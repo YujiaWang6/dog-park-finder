@@ -49,3 +49,5 @@ Route::get('/console/reviews/delete/{review:id}', [ReviewsController::class, 'de
 Route::post('/console/reviews/deleted/{review:id}', [ReviewsController::class, 'deleted'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::get('/console/reviews/add', [ReviewsController::class, 'addForm'])->middleware(['auth', 'isadmin']);
 Route::post('/console/reviews/add', [ReviewsController::class, 'add'])->middleware(['auth', 'isadmin']);
+Route::get('/console/reviews/edit/{review:id}', [ReviewsController::class, 'editForm'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
+Route::post('/console/reviews/edit/{review:id}', [ReviewsController::class, 'edit'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
