@@ -27,45 +27,51 @@
         <?php endif; ?>
     </header>
 
-    <section>
+    <section class="w3-padding">
         <h1>Manage Parks</h1>
-        <a href="/console/parks/add">Create a new park</a>
+        <a href="/console/parks/add" class="btn btn-primary">Create a new park</a>
         <h2>List of Parks</h2>
         <div>
             <?php if(session()->has('message')):?>
-                <div>
+                <div class="h5 w3-text-red">
                     <?= session()->get('message')?>
                 </div>
             <?php endif;?>
         </div>
-        <table>
-            <tr>
-                <th></th>
-                <th>Park Name</th>
-                <th>Address</th>
-                <th>Postcode</th>
-                <th>Information</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>City</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <?php foreach($parks as $key=>$value): ?>
-                <tr>
-                    <td><?= $value->id?></td>
-                    <td><?= $value->park_name?></td>
-                    <td><?= $value->address?></td>
-                    <td><?= $value->postcode?></td>
-                    <td><?= $value->information?></td>
-                    <td><?= $value->latitude?></td>
-                    <td><?= $value->longitude?></td>
-                    <td><?= $value->city?></td>
-                    <td><a href="/console/parks/edit/<?= $value->id?>">Modify</a></td>
-                    <td><a href="/console/parks/delete/<?= $value->id?>">Delete</a></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Park Name</th>
+                        <th>Address</th>
+                        <th>Postcode</th>
+                        <th>Information</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>City</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <?php foreach($parks as $key=>$value): ?>
+                        <tr>
+                            <td><?= $value->id?></td>
+                            <td><?= $value->park_name?></td>
+                            <td><?= $value->address?></td>
+                            <td><?= $value->postcode?></td>
+                            <td><?= $value->information?></td>
+                            <td><?= $value->latitude?></td>
+                            <td><?= $value->longitude?></td>
+                            <td><?= $value->city?></td>
+                            <td><a href="/console/parks/edit/<?= $value->id?>">Modify</a></td>
+                            <td><a href="/console/parks/delete/<?= $value->id?>">Delete</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </section>
         
 </body>

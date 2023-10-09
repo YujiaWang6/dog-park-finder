@@ -27,41 +27,47 @@
         <?php endif; ?>
     </header>
 
-    <section>
+    <section class="w3-padding">
         <h1>Manage Users</h1>
-        <a href="/console/users/add">Create a new user</a>
+        <a href="/console/users/add" class="btn btn-primary">Create a new user</a>
         <h2>List of Users</h2>
         <div>
             <?php if(session()->has('message')):?>
-                <div>
+                <div class="h6 w3-text-red">
                     <?= session()->get('message')?>
                 </div>
             <?php endif;?>
         </div>
-        <table>
-            <tr>
-                <th></th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>Breed</th>
-                <th>Age</th>
-                <th>User Role</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <?php foreach($users as $key=>$value): ?>
-                <tr>
-                    <td><?= $value->id?></td>
-                    <td><?= $value->user_name?></td>
-                    <td><?= $value->email?></td>
-                    <td><?= $value->breed?></td>
-                    <td><?= $value->age?></td>
-                    <td><?= $value->user_role?></td>
-                    <td><a href="/console/users/edit/<?= $value->id?>">Modify</a></td>
-                    <td><a href="/console/users/delete/<?= $value->id?>">Delete</a></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Breed</th>
+                        <th>Age</th>
+                        <th>User Role</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <?php foreach($users as $key=>$value): ?>
+                        <tr>
+                            <td><?= $value->id?></td>
+                            <td><?= $value->user_name?></td>
+                            <td><?= $value->email?></td>
+                            <td><?= $value->breed?></td>
+                            <td><?= $value->age?></td>
+                            <td><?= $value->user_role?></td>
+                            <td><a href="/console/users/edit/<?= $value->id?>">Modify</a></td>
+                            <td><a href="/console/users/delete/<?= $value->id?>">Delete</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </section>
         
 </body>

@@ -27,13 +27,19 @@
         <?php endif; ?>
     </header>
 
-    <section>
+    <section class="container-sm">
         <a href="/console/parks/list">Back to Parks List</a>
-        <h1>Are you sure you want to delete <?= $park->park_name?></h1>
-        <form method="post" action="/console/parks/deleted/<?= $park->id?>" novalidate>
+        <h1 class="h1 text-center">Are you sure you want to delete <?= $park->park_name?></h1>
+        <form method="post" action="/console/parks/deleted/<?= $park->id?>" novalidate class="text-center">
             <?= csrf_field()?>
-            <button type="submit">Confirm</button>
-            <a href="/console/parks/list">Cancel</a>
+            <div class="row">
+                <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
+                    <a href="/console/parks/list" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
         </form>
     </section>
         
