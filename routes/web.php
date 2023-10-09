@@ -40,8 +40,10 @@ Route::post('/console/parks/edit/{park:id}', [ParksController::class, 'edit'])->
 Route::get('/console/users/list', [UsersController::class, 'list'])->middleware(['auth', 'isadmin']);
 Route::get('/console/users/delete/{user:id}', [UsersController::class, 'deleteConfirm'])->where('user', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::post('/console/users/deleted/{user:id}', [UsersController::class, 'deleted'])->where('user', '[0-9]+')->middleware(['auth', 'isadmin']);
-Route::get('/console/users/add', [UsersController::class, 'addFrom'])->middleware(['auth', 'isadmin']);
-Route::post('/console/users/add', [UsersController::class, 'add'])->middleware(['auth','isadmin']);
+/*-- User registration --*/
+Route::get('/console/users/add', [UsersController::class, 'addFrom']);
+Route::post('/console/users/add', [UsersController::class, 'add']);
+
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware(['auth','isadmin']);
 

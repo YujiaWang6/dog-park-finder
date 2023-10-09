@@ -11,7 +11,7 @@
     <script src="/app.js"></script>
 </head>
 <body>
-    <header class="w3-padding">
+    <section class="w3-padding">
         <?php if(Auth::check()): ?>
                     <p class="h4">
                         You are logged in as
@@ -25,7 +25,7 @@
                 <a href="/" class="btn btn-outline-info">Back to Home Page</a>
             </span>
         <?php endif; ?>
-    </header>
+    </section>
 
     <section class="w3-padding">
         <h1>Manage Reviews</h1>
