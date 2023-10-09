@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+
 class UsersController extends Controller
 {
     public function list()
@@ -61,11 +63,22 @@ class UsersController extends Controller
         $user->password = $attributes['password'];
         $user->breed = $attributes['breed'];
         $user->age = $attributes['age'];
-        $user->user_role = $attributes['user_role'];
+        if(isset($attributes['user_role'])) 
+        {
+            $user->user_role = $attributes['user_role'];
+        } else {
+            $user->user_role = 'user';
+        };
         $user->save();
 
-        return redirect('/console/users/list')
+        if(Auth::check() && auth()->user()->user_role==='admin'){
+            return redirect('/console/users/list')
             ->with('message', $user->user_name . ' has been created');
+        } else{
+            Auth::login($user);
+            return redirect('/');
+        }
+
     }
 
     public function editForm(User $user)
