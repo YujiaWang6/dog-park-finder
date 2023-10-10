@@ -7,6 +7,7 @@ use App\Http\Controllers\ParksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\HomeController;
 
 use App\Http\Middleware\AdminMiddleware;
 /*
@@ -24,6 +25,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function(){
+    return view('about');
+});
+
+Route::get('/contact', function(){
+    return view('contact');
+});
+
+Route::get('/parks', [HomeController::class, 'parks']);
+
+Route::get('/parks/{park:id}', [HomeController::class, 'parkDetail'])->where('park', '[0-9]+');
+
+/*-- CMS --*/
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware(['auth','isadmin']);
 Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest')->name('login');
 Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
@@ -43,7 +57,6 @@ Route::post('/console/users/deleted/{user:id}', [UsersController::class, 'delete
 /*-- User registration --*/
 Route::get('/console/users/add', [UsersController::class, 'addFrom']);
 Route::post('/console/users/add', [UsersController::class, 'add']);
-
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 Route::get('/console/users/profile/{user:id}', [UsersController::class, 'profile'])->where('user', '[0-9]+')->middleware('auth');

@@ -27,5 +27,12 @@
                 <a href='/console/users/add'>Create an account</a>
             <?php endif;?>
         </div>
+
+        <section>
+            <form action="/parks" method="get">
+                <input type="text" name="location" id="location">
+                <button type="submit">Search</button>
+            </form>
+        </section>
     </body>
 </html>
