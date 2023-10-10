@@ -17,8 +17,20 @@ class ConsoleController extends Controller
         return view('console.login');
     }
 
-    public function login()
+    public function login(Request $request)
     {
+        $previous = $request->session()->get('url')['intended'];
+        /*
+        ddd($request);
+        $seperateUrl = explode('/', $previous);
+        ddd($seperateUrl);
+        if(count($seperateUrl)>0){
+            $homePage = $seperateUrl[0];
+        }else{
+            $homePage = $previous;
+        }
+        */
+
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -30,7 +42,7 @@ class ConsoleController extends Controller
             if($user->user_role === 'admin'){
                 return redirect('/console/dashboard');
             }else{
-                return redirect('/');
+                return redirect($previous);
             }
         }
 

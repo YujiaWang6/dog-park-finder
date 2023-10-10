@@ -38,5 +38,6 @@
 
         </div>
         <a href="/console/reports/add">Report safety issue</a>
+        <a href="/console/reviews/add">Rate and Review</a>
     </body>
 </html>

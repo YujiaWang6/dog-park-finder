@@ -64,15 +64,19 @@ Route::get('/console/users/profile/{user:id}', [UsersController::class, 'profile
 Route::get('/console/reviews/list', [ReviewsController::class, 'list'])->middleware(['auth', 'isadmin']);
 Route::get('/console/reviews/delete/{review:id}', [ReviewsController::class, 'deleteConfirm'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::post('/console/reviews/deleted/{review:id}', [ReviewsController::class, 'deleted'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
-Route::get('/console/reviews/add', [ReviewsController::class, 'addForm'])->middleware(['auth', 'isadmin']);
+/*-- Add review --*/
+Route::get('/console/reviews/add', [ReviewsController::class, 'addForm'])->middleware('auth');
 Route::post('/console/reviews/add', [ReviewsController::class, 'add'])->middleware(['auth', 'isadmin']);
+
 Route::get('/console/reviews/edit/{review:id}', [ReviewsController::class, 'editForm'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
 Route::post('/console/reviews/edit/{review:id}', [ReviewsController::class, 'edit'])->where('review', '[0-9]+')->middleware(['auth','isadmin']);
 
 Route::get('/console/reports/list', [ReportsController::class, 'list'])->middleware(['auth', 'isadmin']);
 Route::get('/console/reports/delete/{report:id}', [ReportsController::class, 'deleteConfirm'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::post('/console/reports/deleted/{report:id}', [ReportsController::class, 'deleted'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
-Route::get('/console/reports/add', [ReportsController::class, 'addForm'])->middleware(['auth', 'isadmin']);
+/*-- Add report --*/
+Route::get('/console/reports/add', [ReportsController::class, 'addForm'])->middleware('auth');
 Route::post('/console/reports/add', [ReportsController::class, 'add'])->middleware(['auth', 'isadmin']);
+
 Route::get('/console/reports/edit/{report:id}', [ReportsController::class, 'editForm'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
 Route::post('/console/reports/edit/{report:id}', [ReportsController::class, 'edit'])->where('report', '[0-9]+')->middleware(['auth', 'isadmin']);
