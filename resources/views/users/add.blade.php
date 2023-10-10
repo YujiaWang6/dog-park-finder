@@ -124,9 +124,6 @@
             <h1 class="h1 text-center">You've already logged in, please log out to create an new account.</h1>
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
-                    <a href="/" class="btn btn-success">Profile</a>
-                </div>
-                <div class="col-sm-6 mb-3 mb-sm-0 text-center p-2">
                     <a href="/console/logout" class="btn btn-success">Log out</a>
                 </div>
             </div>

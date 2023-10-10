@@ -20,7 +20,7 @@
                 <a href='/console/dashboard'>Dashboard</a>
                 <a href='/console/logout'>log out</a>
             <?php elseif(Auth::check() && auth()->user()->user_role === 'user'): ?>
-                <a href='/'>Profile</a>
+                <a href='/console/users/profile/<?= auth()->user()->id?>'>Profile</a>
                 <a href='/console/logout'>Log out</a>
             <?php else:?>
                 <a href='/console/login'>Login</a>

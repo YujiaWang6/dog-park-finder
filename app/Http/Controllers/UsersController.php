@@ -115,4 +115,11 @@ class UsersController extends Controller
         return redirect('/console/users/list')
             ->with('message', $user->user_name . ' has been updated');
     }
+
+    public function profile(User $user)
+    {
+        return view('users.profile', [
+            'user'=>$user,
+        ]);
+    }
 }
