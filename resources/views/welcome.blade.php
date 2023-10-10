@@ -29,9 +29,9 @@
         </div>
 
         <section>
-            <form action="/parks" method="get">
+            <form action="/parksresult" method="get">
                 <input type="text" name="location" id="location">
-                <button type="submit">Search</button>
+                <button type="submit" id="submitBtn">Search</button>
             </form>
         </section>
     </body>

@@ -33,7 +33,7 @@ Route::get('/contact', function(){
     return view('contact');
 });
 
-Route::get('/parks', [HomeController::class, 'parks']);
+Route::get('/parksresult', [HomeController::class, 'parks']);
 
 Route::get('/parks/{park:id}', [HomeController::class, 'parkDetail'])->where('park', '[0-9]+');
 
