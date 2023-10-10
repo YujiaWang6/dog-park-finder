@@ -89,20 +89,22 @@
                 <?php endif;?>
 
             </div>
-            <div class="mb-3">
-                <label for="user_role" class="form-label">User Role:</label>
-                <input type="radio" name="user_role" id="admin" value="admin" <?= old('user_role', $user->user_role) === 'admin' ? 'checked' : '' ?>>
-                <label for="admin">Admin</label>
-                <input type="radio" name="user_role" id="user" value="user" <?= old('user_role', $user->user_role) === 'user' ? 'checked' : ''?>>
-                <label for="user">User</label>
+            <?php if(auth()->user()->user_role === 'admin'):?>
+                <div class="mb-3">
+                    <label for="user_role" class="form-label">User Role:</label>
+                    <input type="radio" name="user_role" id="admin" value="admin" <?= old('user_role', $user->user_role) === 'admin' ? 'checked' : '' ?>>
+                    <label for="admin">Admin</label>
+                    <input type="radio" name="user_role" id="user" value="user" <?= old('user_role', $user->user_role) === 'user' ? 'checked' : ''?>>
+                    <label for="user">User</label>
 
-                <?php if($errors->first('user_role')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('user_role');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('user_role')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('user_role');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
+                </div>
+            <?php endif;?>
             <button type="submit" class="btn btn-primary">Update</button>
 
         </form>

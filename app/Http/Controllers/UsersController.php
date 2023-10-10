@@ -83,9 +83,15 @@ class UsersController extends Controller
 
     public function editForm(User $user)
     {
-        return view('users.edit', [
-            'user'=>$user
-        ]);
+        if((auth()->user()->id == $user->id) || auth()->user()->user_role === 'admin')
+        {
+            return view('users.edit', [
+                'user'=>$user
+            ]);
+        } else{
+            return redirect('/');
+        }
+
     }
 
     public function edit(User $user)
@@ -109,11 +115,22 @@ class UsersController extends Controller
 
         $user->breed = $attributes['breed'];
         $user->age = $attributes['age'];
-        $user->user_role = $attributes['user_role'];
+        if(isset($attributes['user_role'])) 
+        {
+            $user->user_role = $attributes['user_role'];
+        } else {
+            $user->user_role = 'user';
+        };
         $user->save();
 
-        return redirect('/console/users/list')
+        if(Auth::check() && auth()->user()->user_role==='admin'){
+            return redirect('/console/users/list')
             ->with('message', $user->user_name . ' has been updated');
+        } else{
+            Auth::login($user);
+            return redirect('/console/users/profile/'.$user->id);
+        }
+
     }
 
     public function profile(User $user)
