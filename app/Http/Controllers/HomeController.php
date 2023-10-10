@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Park;
+use App\Models\User;
+use App\Models\Report;
+use App\Models\Review;
 
 use Illuminate\Support\Facades\Http;
 
@@ -52,6 +55,50 @@ class HomeController extends Controller
             return view('error');
         }
 
-
     }
+
+    public function parkDetail(Park $park)
+    {
+        $reports = [];
+        $reviews = [];
+        $users = [];
+
+        $markTotal=0;
+        $finalMark=null;
+
+        $allReports = Report::all();
+
+        foreach($allReports as $report){
+            $parkInReport = $report->park_id;
+            if($parkInReport === $park->id){
+                $reports[] = $report;
+            }
+        }
+
+        $allReviews = Review::all();
+
+        foreach($allReviews as $review){
+            $parkInReview = $review->park_id;
+            if($parkInReview === $park->id){
+                $reviews[] = $review;
+
+                foreach($reviews as $reviewWithMark){
+                    $eachMark = $reviewWithMark->mark;
+                    $markTotal =+ $eachMark;
+                }
+            }
+        }
+
+        if(count($reviews)>0){
+            $finalMark = round($markTotal/count($reviews),1);
+        }
+
+        return view('home.park',[
+            'park'=>$park,
+            'reports'=>$reports,
+            'reviews'=>$reviews,
+            'marks' => $finalMark,
+        ]);
+    }
+
 }

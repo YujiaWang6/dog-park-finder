@@ -59,7 +59,7 @@ Route::get('/console/users/add', [UsersController::class, 'addFrom']);
 Route::post('/console/users/add', [UsersController::class, 'add']);
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
-Route::get('/console/users/profile/{user:id}', [UsersController::class, 'profile'])->where('user', '[0-9]+')->middleware('auth');
+Route::get('/console/users/profile/{user:id}', [UsersController::class, 'profile'])->where('user', '[0-9]+');
 
 Route::get('/console/reviews/list', [ReviewsController::class, 'list'])->middleware(['auth', 'isadmin']);
 Route::get('/console/reviews/delete/{review:id}', [ReviewsController::class, 'deleteConfirm'])->where('review', '[0-9]+')->middleware(['auth', 'isadmin']);
