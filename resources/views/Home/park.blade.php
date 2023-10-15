@@ -14,6 +14,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     </head>
     <body>
+        <a href="/parksresult?location=<?= $searchedLocation?>">Back to Search Results</a>
         <h1><?= $park->park_name?></h1>
         <p><?= $park->city?></p>
         <div>

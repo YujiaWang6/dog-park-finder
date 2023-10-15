@@ -17,6 +17,8 @@ class HomeController extends Controller
         /*-- Get input location & setting url & key --*/
         $location = $request->input('location');
 
+        session(['user_location' => $location]);
+
         $range = 1;
 
         $key = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
@@ -59,6 +61,8 @@ class HomeController extends Controller
 
     public function parkDetail(Park $park)
     {
+        $searchedLocation = session('user_location');
+        
         $reports = [];
         $reviews = [];
         $users = [];
@@ -98,6 +102,7 @@ class HomeController extends Controller
             'reports'=>$reports,
             'reviews'=>$reviews,
             'marks' => $finalMark,
+            'searchedLocation' => $searchedLocation,
         ]);
     }
 
