@@ -37,7 +37,7 @@
                 <?= $marks?>
 
         </div>
-        <a href="/console/reports/add">Report safety issue</a>
-        <a href="/console/reviews/add">Rate and Review</a>
+        <a href="/parks/<?= $park->id?>/report/add">Report safety issue</a>
+        <a href="/parks/<?= $park->id?>/review/add">Rate and Review</a>
     </body>
 </html>

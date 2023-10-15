@@ -101,4 +101,50 @@ class HomeController extends Controller
         ]);
     }
 
+    public function addReviewForm(Park $park)
+    {
+        return view('home.addReview',[
+            'park'=>$park,
+        ]);
+    }
+
+    public function addReview(Park $park)
+    {
+        $attributes = request()->validate([
+            'mark'=>'required',
+            'description'=>'nullable',
+        ]);
+
+        $review = new Review();
+        $review->user_id = auth()->user()->id;
+        $review->park_id = $park->id;
+        $review->mark = $attributes['mark'];
+        $review->description = $attributes['description'];
+        $review->save();
+
+        return redirect('/parks/'.$park->id);
+    }
+
+    public function addReportForm(Park $park)
+    {
+        return view('home.addReport',[
+            'park'=>$park,
+        ]);
+    }
+
+    public function addReport(Park $park)
+    {
+        $attributes = request()->validate([
+            'report'=>'required',
+        ]);
+        
+        $report = new Report();
+        $report->user_id = auth()->user()->id;
+        $report->park_id = $park->id;
+        $report->report = $attributes['report'];
+        $report->save();
+
+        return redirect('/parks/'.$park->id);
+    }
+
 }
