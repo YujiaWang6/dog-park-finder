@@ -19,17 +19,6 @@ class ConsoleController extends Controller
 
     public function login(Request $request)
     {
-        $previous = $request->session()->get('url')['intended'];
-        /*
-        ddd($request);
-        $seperateUrl = explode('/', $previous);
-        ddd($seperateUrl);
-        if(count($seperateUrl)>0){
-            $homePage = $seperateUrl[0];
-        }else{
-            $homePage = $previous;
-        }
-        */
 
         $attributes = request()->validate([
             'email' => 'required|email',
@@ -39,10 +28,18 @@ class ConsoleController extends Controller
         {
             $user = auth()->user();
 
-            if($user->user_role === 'admin'){
-                return redirect('/console/dashboard');
-            }else{
+            //$previous = $request->session()->get('url')['intended'];
+            $previous = $request->session()->get('url.intended');
+
+            if($previous!==null){
+                
                 return redirect($previous);
+            }else{
+                if($user->user_role === 'admin'){
+                    return redirect('/console/dashboard');
+                }else{
+                    return redirect('/');
+                }
             }
         }
 
