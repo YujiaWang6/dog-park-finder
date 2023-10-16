@@ -19,7 +19,9 @@ class HomeController extends Controller
 
         session(['user_location' => $location]);
 
-        $range = 1;
+        $rangeLati = 0.0707;
+
+        $rangeLongi = 0.1;
 
         $key = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
 
@@ -42,7 +44,7 @@ class HomeController extends Controller
                 $parkLatitude = $park->latitude;
                 $parkLongitude = $park->longitude;
 
-                if(($parkLatitude>$latitude-$range)&&($parkLatitude<$latitude+$range)&&($parkLongitude>$longitude-$range)&&($parkLongitude<$longitude+$range)){
+                if(($parkLatitude>$latitude-$rangeLati)&&($parkLatitude<$latitude+$rangeLati)&&($parkLongitude>$longitude-$rangeLongi)&&($parkLongitude<$longitude+$rangeLongi)){
                     $parksResult[] = $park;
                 }
             }
