@@ -38,9 +38,9 @@ Route::get('/parksresult', [HomeController::class, 'parks']);
 
 Route::get('/parks/{park:id}', [HomeController::class, 'parkDetail'])->where('park', '[0-9]+');
 
+/*-- USER - ADD REPORT & REVIEW --*/
 Route::get('/parks/{park:id}/review/add', [HomeController::class, 'addReviewForm'])->where('park', '[0-9]+')->middleware('auth');
 Route::post('/parks/{park:id}/review/add', [HomeController::class, 'addReview'])->where('park', '[0-9]+')->middleware('auth');
-
 Route::get('/parks/{park:id}/report/add', [HomeController::class, 'addReportForm'])->where('park', '[0-9]+')->middleware('auth');
 Route::post('/parks/{park:id}/report/add', [HomeController::class, 'addReport'])->where('park', '[0-9]+')->middleware('auth');
 
