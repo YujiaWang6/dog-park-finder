@@ -10,7 +10,7 @@ use App\Models\Review;
 
 use Illuminate\Support\Facades\Http;
 
-class HomeController extends Controller
+class FrontController extends Controller
 {
     public function parks(Request $request)
     {
@@ -49,7 +49,7 @@ class HomeController extends Controller
                 }
             }
 
-            return view('home.parksresult', [
+            return view('front.parksresult', [
                 'location' => $location,
                 'parks' => $parksResult,
 
@@ -99,7 +99,7 @@ class HomeController extends Controller
             $finalMark = round($markTotal/count($reviews),1);
         }
 
-        return view('home.park',[
+        return view('front.park',[
             'park'=>$park,
             'reports'=>$reports,
             'reviews'=>$reviews,
@@ -110,7 +110,7 @@ class HomeController extends Controller
 
     public function addReviewForm(Park $park)
     {
-        return view('home.addReview',[
+        return view('front.addReview',[
             'park'=>$park,
         ]);
     }
@@ -134,7 +134,7 @@ class HomeController extends Controller
 
     public function addReportForm(Park $park)
     {
-        return view('home.addReport',[
+        return view('front.addReport',[
             'park'=>$park,
         ]);
     }

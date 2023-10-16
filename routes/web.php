@@ -7,7 +7,7 @@ use App\Http\Controllers\ParksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FrontController;
 
 use App\Http\Middleware\AdminMiddleware;
 /*
@@ -34,15 +34,15 @@ Route::get('/contact', function(){
     return view('contact');
 });
 /*-- PARK DETAIL --*/
-Route::get('/parksresult', [HomeController::class, 'parks']);
+Route::get('/parksresult', [FrontController::class, 'parks']);
 
-Route::get('/parks/{park:id}', [HomeController::class, 'parkDetail'])->where('park', '[0-9]+');
+Route::get('/parks/{park:id}', [FrontController::class, 'parkDetail'])->where('park', '[0-9]+');
 
 /*-- USER - ADD REPORT & REVIEW --*/
-Route::get('/parks/{park:id}/review/add', [HomeController::class, 'addReviewForm'])->where('park', '[0-9]+')->middleware('auth');
-Route::post('/parks/{park:id}/review/add', [HomeController::class, 'addReview'])->where('park', '[0-9]+')->middleware('auth');
-Route::get('/parks/{park:id}/report/add', [HomeController::class, 'addReportForm'])->where('park', '[0-9]+')->middleware('auth');
-Route::post('/parks/{park:id}/report/add', [HomeController::class, 'addReport'])->where('park', '[0-9]+')->middleware('auth');
+Route::get('/parks/{park:id}/review/add', [FrontController::class, 'addReviewForm'])->where('park', '[0-9]+')->middleware('auth');
+Route::post('/parks/{park:id}/review/add', [FrontController::class, 'addReview'])->where('park', '[0-9]+')->middleware('auth');
+Route::get('/parks/{park:id}/report/add', [FrontController::class, 'addReportForm'])->where('park', '[0-9]+')->middleware('auth');
+Route::post('/parks/{park:id}/report/add', [FrontController::class, 'addReport'])->where('park', '[0-9]+')->middleware('auth');
 
 /*-- CMS --*/
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware(['auth','isadmin']);
