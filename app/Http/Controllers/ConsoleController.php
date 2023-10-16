@@ -19,7 +19,7 @@ class ConsoleController extends Controller
 
     public function login(Request $request)
     {
-
+        ddd($request->session());
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required',
