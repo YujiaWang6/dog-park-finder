@@ -19,7 +19,7 @@ class ConsoleController extends Controller
 
     public function login(Request $request)
     {
-        ddd($request);
+        ///ddd($request);
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -27,8 +27,7 @@ class ConsoleController extends Controller
         if(auth()->attempt($attributes))
         {
             $user = auth()->user();
-
-            //$previous = $request->session()->get('url')['intended'];
+            
             $previous = $request->session()->get('url.intended');
 
             if($previous!==null){

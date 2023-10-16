@@ -115,7 +115,7 @@ class FrontController extends Controller
         ]);
     }
 
-    public function addReview(Park $park)
+    public function addReview(Park $park, Request $request)
     {
         $attributes = request()->validate([
             'mark'=>'required',
@@ -129,6 +129,11 @@ class FrontController extends Controller
         $review->description = $attributes['description'];
         $review->save();
 
+        $previous = $request->session()->get('url.intended');
+        if($previous!== null){
+            $request->session()->put('url.intended', null);
+        }
+       
         return redirect('/parks/'.$park->id);
     }
 
@@ -139,7 +144,7 @@ class FrontController extends Controller
         ]);
     }
 
-    public function addReport(Park $park)
+    public function addReport(Park $park, Request $request)
     {
         $attributes = request()->validate([
             'report'=>'required',
@@ -151,6 +156,11 @@ class FrontController extends Controller
         $report->report = $attributes['report'];
         $report->save();
 
+        $previous = $request->session()->get('url.intended');
+        if($previous!== null){
+            $request->session()->put('url.intended', null);
+        }
+        
         return redirect('/parks/'.$park->id);
     }
 
