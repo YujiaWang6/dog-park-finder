@@ -12,7 +12,7 @@
 </head>
 <body>
     <section class="w3-padding">
-        <?php if(Auth::check()): ?>
+        <?php if(Auth::check()&&auth()->user()->user_role==='admin'): ?>
                     <p class="h4">
                         You are logged in as
                         <?= auth()->user()->user_name ?>
@@ -28,7 +28,9 @@
     </section>
 
     <section class="container-sm">
-        <a href="/console/users/list">Back to Users List</a>
+        <?php if(auth()->user()->user_role==='admin'):?>
+            <a href="/console/users/list">Back to Users List</a>
+        <?php endif;?>
         <h1 class="h1">Update <?= $user->user_name?></h1>
         <form method="post" action="/console/users/edit/<?= $user->id?>" novalidation>
             <?= csrf_field()?>
