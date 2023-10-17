@@ -76,8 +76,8 @@
             <p class="h4">Address: <?=$park->address?>, <?= $park->city?> <?=$park->postcode?></p>
             <h2>Information:</h2>
             <p><?= $park->information?></p>
-            <h3>Average Mark: <?= $marks?>/5</h3>
-            <div>
+            <h3 class="mb-5">Average Mark: <?= $marks?>/5</h3>
+            <div class="mb-5">
                 <h2>Safety Reports:</h2>
                 <?php foreach($reports as $report):?>
                     <div class="row mb-3">
@@ -87,7 +87,7 @@
 
                 <?php endforeach;?>
             </div>
-            <div>
+            <div class="mb-5">
                 <h2>Reviews:</h2>
                 <?php foreach($reviews as $review):?>
                     <div class="row mb-3">

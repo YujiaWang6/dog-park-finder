@@ -15,7 +15,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <style>
             .search-box{
-                background-color: rgb(255, 255, 255, 0.75); width:65vw; height:34vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:15px;
+                background-color: rgb(255, 255, 255, 0.65); width:65vw; height:34vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:15px;
             }
             @media screen and (max-width:1000px){
                 .search-box{

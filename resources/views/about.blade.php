@@ -72,6 +72,25 @@
             </div>
         </nav>
 
+        <section class="d-flex" style="background-image: url({{ asset('about.jpeg') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; height: 90vh;">
+            <div class="container-sm" style="background-color:rgb(255,255,255,0.65)">
+                <div>
+                    <h1 class="mt-5">About Dog Park Finder</h1>
+                    <p>Welcome to Dog Park Finder, your go-to source for finding the best off-leash dog parks near you! Our mission is to make every dog owner's experience at the park enjoyable, safe, and informative.</p>
+                    <h2>Our Story</h2>
+                    <p>Dog Park Finder was born out of a deep love for our four-legged friends. We understand the importance of providing dogs with a safe and engaging environment where they can run, play, and socialize. Our team of dog enthusiasts came together to create this platform, aiming to connect dog owners with the perfect parks for their furry companions.</p>
+                    <h2>What We Do</h2>
+                    <ul>
+                        <li><strong>Find Dog Parks</strong>: Discover a variety of dog parks in your area with detailed information on their locations, amenities, and more.</li>
+                        <li><strong>Read Reviews</strong>: Get insights from the community by reading reviews and ratings of dog parks. Find the most popular and highly-rated spots for your dog to enjoy.</li>
+                        <li><strong>Share Your Experience</strong>: Join the community and share your own experiences. Leave reviews and let others know about your favorite dog parks and the adventures you've had there.</li>
+                        <li><strong>Safety First</strong>: We take safety seriously. Use our reporting feature to alert the community about any potential hazards, accidents, or issues in a dog park.</li>
+                    </ul>
+                    <h2>Get Involved</h2>
+                    <p>Join our community of dog lovers, and let's work together to ensure that every dog has access to the best dog parks. Whether you're a seasoned dog owner or a new pup parent, we welcome you to share your experiences, contribute to our database, and help us make this platform even better.</p>
+                </div>
+            </div>
+        </section>
 
 
         <footer class="container-fluid">
