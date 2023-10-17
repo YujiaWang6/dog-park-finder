@@ -63,31 +63,46 @@
         </section>
         
         <section class="container-sm">
-            <h1><?= $park->park_name?></h1>
-            <p><?= $park->city?></p>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h1><?= $park->park_name?></h1>
+                </div>
+                <div class="col-4 d-flex justify-content-between">
+                    <a href="/parks/<?= $park->id?>/report/add" class="btn btn-danger d-flex align-items-center">Report safety issue</a>
+                    <a href="/parks/<?= $park->id?>/review/add" class="btn btn-success d-flex align-items-center">Rate and Review</a>
+                </div> 
+            </div>
+
+            <p class="h4">Address: <?=$park->address?>, <?= $park->city?> <?=$park->postcode?></p>
+            <h2>Information:</h2>
+            <p><?= $park->information?></p>
+            <h3>Average Mark: <?= $marks?>/5</h3>
             <div>
-                <h2>Reports</h2>
+                <h2>Safety Reports:</h2>
                 <?php foreach($reports as $report):?>
-                    <?= $report->report?>
-                    <a href="/console/users/profile/<?= $report->user->id?>"><?= $report->user->user_name?></a>
+                    <div class="row mb-3">
+                        <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
+                        <p class="col-sm-10"><?= $report->report?></p>
+                    </div>
+
                 <?php endforeach;?>
             </div>
             <div>
-                <h2>Reviews</h2>
+                <h2>Reviews:</h2>
                 <?php foreach($reviews as $review):?>
-                    <?= $review->description?>
-                    <?= $review->mark?>
-                    <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
+                    <div class="row mb-3">
+                        <div class="col-sm-2">
+                            <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
+                            <p>mark:<?= $review->mark?>/5</p>
+                        </div>
+                        <p class="col-sm-10"><?= $review->description?></p>
+                    </div>
+                    
+
+
                 <?php endforeach;?>
             </div>
-            <div>
-                <h2>Average Mark</h2>
 
-                    <?= $marks?>
-
-            </div>
-            <a href="/parks/<?= $park->id?>/report/add">Report safety issue</a>
-            <a href="/parks/<?= $park->id?>/review/add">Rate and Review</a>
         </section>
 
 
