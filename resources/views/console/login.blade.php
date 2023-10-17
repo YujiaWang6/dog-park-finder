@@ -55,8 +55,8 @@
             </div>
         </nav>
 
-    <div style="background-image: url({{ asset('login1.jpeg') }});background-position:center 35%; background-size:cover; background-repeat: no-repeat; height:90vh;">
-        <div style="background-color:rgb(255,255,255,0.5); height:90vh;">
+    <div style="background-image: url({{ asset('login1.jpeg') }});background-position:center 35%; background-size:cover; background-repeat: no-repeat; min-height:90vh;">
+        <div style="background-color:rgb(255,255,255,0.5); min-height:90vh;">
             <section class="w3-padding">
                 <?php if(Auth::check()): ?>
                             <p class="h4">

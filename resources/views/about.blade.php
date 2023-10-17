@@ -72,8 +72,8 @@
             </div>
         </nav>
 
-        <section class="d-flex" style="background-image: url({{ asset('about.jpeg') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; height: 90vh;">
-            <div class="container-sm" style="background-color:rgb(255,255,255,0.65)">
+        <section class="d-flex" style="background-image: url({{ asset('about.jpeg') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height:90vh;">
+            <div class="container-sm" style="background-color:rgb(255,255,255,0.65); min-height:90vh">
                 <div>
                     <h1 class="mt-5">About Dog Park Finder</h1>
                     <p>Welcome to Dog Park Finder, your go-to source for finding the best off-leash dog parks near you! Our mission is to make every dog owner's experience at the park enjoyable, safe, and informative.</p>

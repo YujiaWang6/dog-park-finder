@@ -72,8 +72,8 @@
             </div>
         </nav>
 
-        <section class="d-flex" style="background-image: url({{ asset('contact.png') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; height: 90vh;">
-            <div class="container-sm" style="background-color:rgb(255,255,255,0.65)">
+        <section class="d-flex" style="background-image: url({{ asset('contact.png') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height:90vh">
+            <div class="container-sm" style="background-color:rgb(255,255,255,0.65); min-height:90vh">
                 <div class="mt-5">
                     <h1 class="h1">Contact Us</h1>
                     <p>If you have any questions, feedback, or need assistance, please don't hesitate to get in touch with us. We're here to help!</p>

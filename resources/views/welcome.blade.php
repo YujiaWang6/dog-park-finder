@@ -72,7 +72,7 @@
             </div>
         </nav>
 
-        <section class="d-flex" style="background-image: url({{ asset('background.jpeg') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; height: 90vh;">
+        <section class="d-flex" style="background-image: url({{ asset('background.jpeg') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height:90vh;">
             <div class="container-sm d-flex justify-content-center align-self-center">
                 <div class="text-center search-box">
                     <div>   
