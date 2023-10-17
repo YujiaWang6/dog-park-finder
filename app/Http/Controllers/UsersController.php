@@ -51,7 +51,9 @@ class UsersController extends Controller
         $attributes = request()->validate([
             'user_name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'email_confirmation' => 'required|email|same:email',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
             'breed' => 'nullable',
             'age' => 'nullable',
             'user_role' => 'nullable',

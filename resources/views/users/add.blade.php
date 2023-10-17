@@ -56,8 +56,8 @@
     </nav>
     
     
-    <div style="background-image: url({{ asset('add.jpeg') }});background-position:center center; background-size:cover; background-repeat: no-repeat; height: 90vh;">
-        <div style="background-color: rgb(255,255,255,0.5); height: 90vh;">
+    <div style="background-image: url({{ asset('add.jpeg') }});background-position:center center; background-size:cover; background-repeat: no-repeat; min-height: 90vh;">
+        <div style="background-color: rgb(255,255,255,0.5); min-height: 90vh;">
 
 
         <section class="w3-padding">
@@ -111,6 +111,17 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="email_confirmation" class="form-label">Confirm Email<sup>*</sup>:</label>
+                        <input type="text" name="email_confirmation" id="email_confirmation" class="form-control" value="<?= old('email_confirmation') ?>">
+
+                        <?php if ($errors->first('email_confirmation')) : ?>
+                            <span class="form-text w3-text-red">
+                                <?= $errors->first('email_confirmation'); ?>
+                            </span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="password" class="form-label">Password<sup>*</sup>:</label>
                         <input type="password" name="password" id="password" class="form-control">
 
@@ -120,6 +131,17 @@
                             </span>
                         <?php endif;?>
 
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">Confirm Password<sup>*</sup>:</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+
+                        <?php if ($errors->first('password_confirmation')) : ?>
+                            <span class="form-text w3-text-red">
+                                <?= $errors->first('password_confirmation'); ?>
+                            </span>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
