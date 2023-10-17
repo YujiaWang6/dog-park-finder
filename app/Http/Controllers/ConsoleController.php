@@ -3,12 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Park;
+use App\Models\Review;
+use App\Models\Report;
 
 class ConsoleController extends Controller
 {
     public function dashboard()
     {
-        return view('console.dashboard');
+        $users = User::take(3)->get();
+        $parks = Park::take(3)->get();
+        $reviews = Review::take(3)->get();
+        $reports = Report::take(3)->get();
+
+        return view('console.dashboard',[
+            'users'=>$users,
+            'parks'=>$parks,
+            'reviews'=>$reviews,
+            'reports'=>$reports,
+        ]);
         
     }
 
@@ -27,7 +41,7 @@ class ConsoleController extends Controller
         if(auth()->attempt($attributes))
         {
             $user = auth()->user();
-            
+
             $previous = $request->session()->get('url.intended');
 
             if($previous!==null){
