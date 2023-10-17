@@ -14,7 +14,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,53 +57,67 @@
                 </div>
             </div>
         </nav>
-
-        <section class="w3-padding">
-            <a href="/parksresult?location=<?= $searchedLocation?>" class="btn btn-outline-info">Back to Search Results</a>
-        </section>
         
-        <section class="container-sm">
-            <div class="row justify-content-between">
-                <div class="col-4">
-                    <h1><?= $park->park_name?></h1>
-                </div>
-                <div class="col-4 d-flex justify-content-between">
-                    <a href="/parks/<?= $park->id?>/report/add" class="btn btn-danger d-flex align-items-center">Report safety issue</a>
-                    <a href="/parks/<?= $park->id?>/review/add" class="btn btn-success d-flex align-items-center">Rate and Review</a>
-                </div> 
-            </div>
 
-            <p class="h4">Address: <?=$park->address?>, <?= $park->city?> <?=$park->postcode?></p>
-            <h2>Information:</h2>
-            <p><?= $park->information?></p>
-            <h3 class="mb-5">Average Mark: <?= $marks?>/5</h3>
-            <div class="mb-5">
-                <h2>Safety Reports:</h2>
-                <?php foreach($reports as $report):?>
-                    <div class="row mb-3">
-                        <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
-                        <p class="col-sm-10"><?= $report->report?></p>
-                    </div>
-
-                <?php endforeach;?>
-            </div>
-            <div class="mb-5">
-                <h2>Reviews:</h2>
-                <?php foreach($reviews as $review):?>
-                    <div class="row mb-3">
-                        <div class="col-sm-2">
-                            <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
-                            <p>mark:<?= $review->mark?>/5</p>
+        <div style="background-image: url({{ asset('parkdetail.jpeg') }});background-position:center center; background-size:cover; background-repeat: no-repeat; height:90vh;">
+            <div style="background-color:rgb(255,255,255,0.5); height:90vh;">
+                <section class="w3-padding">
+                    <a href="/parksresult?location=<?= $searchedLocation?>" class="btn btn-outline-info">Back to Search Results</a>
+                </section>
+            
+                <section class="container-sm">
+                    <div class="row justify-content-between">
+                        <div class="col-4">
+                            <h1><?= $park->park_name?></h1>
                         </div>
-                        <p class="col-sm-10"><?= $review->description?></p>
+                        <div class="col-4 d-flex justify-content-between d-flex flex-wrap">
+                            <a href="/parks/<?= $park->id?>/report/add" class="btn btn-danger d-flex align-items-center">Report safety issue</a>
+                            <a href="/parks/<?= $park->id?>/review/add" class="btn btn-success d-flex align-items-center">Rate and Review</a>
+                        </div> 
                     </div>
-                    
+                    <div class="col-12">
+                        <p class="h4">Address: <?=$park->address?>, <?= $park->city?> <?=$park->postcode?></p>
+                    </div>
+                    <div class="row justify-content-between d-flex flex-wrap">
+                        <div class="col-7" style="min-height: 300px;">
+                            <span class="img-fluid text-center"><?=$finalurl?></span>
+                        </div>
+                        <div class="col-4">
+                            <h2>Information:</h2>
+                            <p><?= $park->information?></p>
+                            <h3 class="mb-5">Average Mark: <?= $marks?>/5</h3>
+                        </div>
+
+                    </div>
+                    <div class="mb-5 mt-3">
+                        <h2>Safety Reports:</h2>
+                        <?php foreach($reports as $report):?>
+                            <div class="row mb-3">
+                                <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
+                                <p class="col-sm-10"><?= $report->report?></p>
+                            </div>
+
+                        <?php endforeach;?>
+                    </div>
+                    <div class="mb-5">
+                        <h2>Reviews:</h2>
+                        <?php foreach($reviews as $review):?>
+                            <div class="row mb-3">
+                                <div class="col-sm-2">
+                                    <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
+                                    <p>mark:<?= $review->mark?>/5</p>
+                                </div>
+                                <p class="col-sm-10"><?= $review->description?></p>
+                            </div>
+                            
 
 
-                <?php endforeach;?>
+                        <?php endforeach;?>
+                    </div>
+
+                </section>
             </div>
-
-        </section>
+        </div>
 
 
         

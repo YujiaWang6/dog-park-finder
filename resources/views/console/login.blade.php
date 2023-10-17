@@ -55,53 +55,58 @@
             </div>
         </nav>
 
-    <section class="w3-padding">
-        <?php if(Auth::check()): ?>
-                    <p class="h4">
-                        You are logged in as
-                        <?= auth()->user()->user_name ?>
-                    </p>
-                    <a href="/" class="btn btn-outline-info">Home Page</a>
-                    <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
-                    <a href="/console/logout" class="btn btn-outline-info">Logout</a>
-        <?php else: ?>
-            <span >
-                <a href="/" class="btn btn-outline-info">Back to Home Page</a>
-            </span>
-        <?php endif; ?>
-    </section>
-
-    <section class="container-sm">
-        <h1 class="h1">Dog Park Finder Login</h1>
-        <form method="post" action="/console/login" novalidation>
-            <?= csrf_field()?>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email Address:</label>
-                <input type="email" name="email" id="email" class="form-control" value="<?=old('email')?>">
-
-                <?php if($errors->first('email')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('email');?>
+    <div style="background-image: url({{ asset('login1.jpeg') }});background-position:center 35%; background-size:cover; background-repeat: no-repeat; height:90vh;">
+        <div style="background-color:rgb(255,255,255,0.5); height:90vh;">
+            <section class="w3-padding">
+                <?php if(Auth::check()): ?>
+                            <p class="h4">
+                                You are logged in as
+                                <?= auth()->user()->user_name ?>
+                            </p>
+                            <a href="/" class="btn btn-outline-info">Home Page</a>
+                            <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
+                            <a href="/console/logout" class="btn btn-outline-info">Logout</a>
+                <?php else: ?>
+                    <span >
+                        <a href="/" class="btn btn-outline-info">Back to Home Page</a>
                     </span>
-                <?php endif;?>
+                <?php endif; ?>
+            </section>
 
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" name="password" id="password" class="form-control">
+            <section class="container-sm">
+                <h1 class="h1">Dog Park Finder Login</h1>
+                <form method="post" action="/console/login" novalidation>
+                    <?= csrf_field()?>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address:</label>
+                        <input type="email" name="email" id="email" class="form-control" value="<?=old('email')?>">
 
-                <?php if($errors->first('password')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('password');?>
-                    </span>
-                <?php endif;?>
+                        <?php if($errors->first('email')):?>
+                            <span class="form-text w3-text-red">
+                                <?= $errors->first('email');?>
+                            </span>
+                        <?php endif;?>
 
-            </div>
-            <button type="submit" class="btn btn-primary">Log In</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control">
 
-        </form>
+                        <?php if($errors->first('password')):?>
+                            <span class="form-text w3-text-red">
+                                <?= $errors->first('password');?>
+                            </span>
+                        <?php endif;?>
 
-    </section>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log In</button>
+
+                </form>
+
+            </section>
+        </div>
+    </div>
+    
     
     <footer class="container-fluid">
         <p>©Copy right Dog Park Finder, 2023</p>

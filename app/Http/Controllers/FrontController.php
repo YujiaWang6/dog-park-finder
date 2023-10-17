@@ -15,7 +15,7 @@ class FrontController extends Controller
     public function parks(Request $request)
     {
         /*-- Get input location & setting url & key --*/
-        $location = $request->input('location');
+        $location = preg_replace('/\s+/', '', $request->input('location'));
         if($location!==null){
 
             session(['user_location' => $location]);
@@ -50,9 +50,21 @@ class FrontController extends Controller
                     }
                 }
 
+                $filtedParksUrl = '';
+                /*-- SETTING THE MAP QUEST API FOR IMG OF MAP--*/
+                foreach($parksResult as $filtedPark){
+                    $filtedParkLati = $filtedPark->latitude;
+                    $filtedParkLongi = $filtedPark->longitude;
+
+                    $filtedParksUrl .= '||' . $filtedParkLati . ',' . $filtedParkLongi;
+                }
+                $mapKey = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
+                $mapUrl = 'https://www.mapquestapi.com/staticmap/v5/map?locations='.$filtedParksUrl.'||'.$location.'|marker-lg-D51A1A-A20000&size=@2x&key='.$mapKey.'&defaultMarker=marker-num';
+
                 return view('front.parksresult', [
                     'location' => $location,
                     'parks' => $parksResult,
+                    'map' => $mapUrl,
 
                 ]);
 
@@ -69,6 +81,12 @@ class FrontController extends Controller
     {
         $searchedLocation = session('user_location');
         
+        $googleKey = 'AIzaSyA0Ev3Rx2Q17hqzfo6N2hy7wJre0Bj25U8';
+
+        $url='https://www.google.com/maps/embed/v1/directions?key='.$googleKey.'&origin='.$searchedLocation.'&destination='.$park->postcode.'&avoid=tolls|highways';
+
+        $finalUrl = '<iframe width="100%" height="100%" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="'.$url.'" allowfullscreen></iframe>';
+
         $reports = [];
         $reviews = [];
         $users = [];
@@ -109,6 +127,7 @@ class FrontController extends Controller
             'reviews'=>$reviews,
             'marks' => $finalMark,
             'searchedLocation' => $searchedLocation,
+            'finalurl'=>$finalUrl,
         ]);
     }
 

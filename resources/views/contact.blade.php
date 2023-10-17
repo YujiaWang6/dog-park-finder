@@ -72,6 +72,30 @@
             </div>
         </nav>
 
+        <section class="d-flex" style="background-image: url({{ asset('contact.png') }}); background-size:cover; background-repeat: no-repeat; background-position: center center; height: 90vh;">
+            <div class="container-sm" style="background-color:rgb(255,255,255,0.65)">
+                <div class="mt-5">
+                    <h1 class="h1">Contact Us</h1>
+                    <p>If you have any questions, feedback, or need assistance, please don't hesitate to get in touch with us. We're here to help!</p>
+                    <h2 class="h2">Contact Information:</h2>
+                    <p><strong>Email</strong>:<a href="mailto:yujia.wang2@mail.mcgill.ca" target="_blank">info@dogparkfinder.com</a></p>
+                    <p>We strive to provide the best experience for our users, and your input is valuable to us. Feel free to reach out with any inquiries or concerns, and we'll do our best to assist you.</p>
+                    <h2 class="h2">User Terms and Conditions</h2>
+                    <p>Please review the following terms and conditions carefully before using our services:</p>
+                    <ol>
+                        <li><strong>Acceptance of Terms</strong>: By using our website or mobile application, you agree to abide by these terms and conditions. If you do not agree, please refrain from using our services.</li>
+                        <li><strong>Privacy Policy</strong>: We are committed to protecting your privacy. Please review our Privacy Policy to understand how we collect, use, and safeguard your personal information.</li>
+                        <li><strong>User Conduct</strong>: Users must use our services responsibly and refrain from any unlawful or harmful activities. Any abusive or inappropriate behavior will not be tolerated.</li>
+                        <li><strong>Content Submission</strong>: When submitting content, including reviews and reports, you agree to provide accurate and honest information. Misleading or false information is not permitted.</li>
+                        <li><strong>Intellectual Property</strong>: All content, including text, images, and software on our platform, is protected by copyright and other intellectual property rights. Users must respect these rights.</li>
+                        <li><strong>Liability</strong>: We strive to provide accurate and helpful information but are not liable for any inaccuracies or errors. Users are responsible for their actions and interactions within the platform.</li>
+                        <li><strong>Updates</strong>: These terms and conditions may be updated from time to time, and users are encouraged to review them periodically.</li>
+                    </ol>
+                    <p>Thank you for using Dog Park Finder. If you have any questions or require further clarification on these terms and conditions, please contact us using the provided contact information.</p>
+                </div>
+            </div>
+
+        </section>
 
 
         <footer class="container-fluid">

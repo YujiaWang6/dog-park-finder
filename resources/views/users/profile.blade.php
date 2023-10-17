@@ -54,58 +54,63 @@
             </div>
         </div>
     </nav>
+    <div style="background-image: url({{ asset('userdetail.jpg') }});background-position:center center; background-size:cover; background-repeat: no-repeat;">
+        <div style="background-color:rgb(255,255,255,0.5);">
+            <section class="w3-padding">
+                <?php if(Auth::check() && auth()->user()->user_role === 'admin'): ?>
+                            <p class="h4">
+                                You are logged in as
+                                <?= auth()->user()->user_name ?>
+                            </p>
+                            <a href="/" class="btn btn-outline-info">Home Page</a>
+                            <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
+                            <a href="/console/logout" class="btn btn-outline-info">Logout</a>
+                <?php else: ?>
+                    <span >
+                        <a href="/" class="btn btn-outline-info">Back to Home Page</a>
+                    </span>
+                <?php endif; ?>
+            </section>
 
-    <section class="w3-padding">
-        <?php if(Auth::check() && auth()->user()->user_role === 'admin'): ?>
-                    <p class="h4">
-                        You are logged in as
-                        <?= auth()->user()->user_name ?>
-                    </p>
-                    <a href="/" class="btn btn-outline-info">Home Page</a>
-                    <a href="/console/dashboard" class="btn btn-outline-info">Dashboard</a>
-                    <a href="/console/logout" class="btn btn-outline-info">Logout</a>
-        <?php else: ?>
-            <span >
-                <a href="/" class="btn btn-outline-info">Back to Home Page</a>
-            </span>
-        <?php endif; ?>
-    </section>
+            <section class="d-flex justify-content-center pt-3 pb-3">
+                <div>
+                    <?php if(Auth::check() && $user->id == auth()->user()->id):?>
+                        <h1 class="h1">Welcome <?= $user->user_name?></h1>
+                    <?php else:?>
+                        <h1 class="h1"><?= $user->user_name?> Profile</h1>
+                    <?php endif;?>
+            
 
-    <section class="d-flex justify-content-center">
-        <div>
-            <?php if(Auth::check() && $user->id == auth()->user()->id):?>
-                <h1 class="h1">Welcome <?= $user->user_name?></h1>
-            <?php else:?>
-                <h1 class="h1"><?= $user->user_name?> Profile</h1>
-            <?php endif;?>
-    
+                    <div class="mb-3">
+                        <p>User Name: <?= $user->user_name?></p>
+                    </div>
 
-            <div class="mb-3">
-                <p>User Name: <?= $user->user_name?></p>
-            </div>
+                    <div class="mb-3">
+                        <p>Email: <?= $user->email?></p>
+                    </div>
 
-            <div class="mb-3">
-                <p>Email: <?= $user->email?></p>
-            </div>
+                    <div class="mb-3">
+                        <p>Breed: <?= $user->breed?></p>
+                    </div>
 
-            <div class="mb-3">
-                <p>Breed: <?= $user->breed?></p>
-            </div>
+                    <div class="mb-3">
+                        <p>Age: <?= $user->age?></p>
+                    </div>
+                    <div class="mb-3">
+                        <?php if(Auth::check() && (($user->id == auth()->user()->id) || (auth()->user()->user_role === 'admin'))):?>
+                            <form method="get" action="/console/users/edit/<?= $user->id?>" novalidation>
+                                <?= csrf_field()?>
+                                <button type="submit" class="btn btn-primary">Update information</button>
+                            </form>
+                        <?php endif;?>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <p>Age: <?= $user->age?></p>
-            </div>
-            <div class="mb-3">
-                <?php if(Auth::check() && (($user->id == auth()->user()->id) || (auth()->user()->user_role === 'admin'))):?>
-                    <form method="get" action="/console/users/edit/<?= $user->id?>" novalidation>
-                        <?= csrf_field()?>
-                        <button type="submit" class="btn btn-primary">Update information</button>
-                    </form>
-                <?php endif;?>
-            </div>
+            </section>
         </div>
+    </div>
 
-    </section>
+
     
     <footer class="container-fluid">
         <p>©Copy right Dog Park Finder, 2023</p>

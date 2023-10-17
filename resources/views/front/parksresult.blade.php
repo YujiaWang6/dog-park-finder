@@ -7,75 +7,87 @@
     <title>Dog Park Finder | Parks around <?= $location?></title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="/">Dog Park Finder</a>
-                    <ul class="navbar-nav me-auto mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="mb-2 mb-lg-0 navbar-nav">
-                        <?php if(Auth::check() && auth()->user()->user_role ==='admin'):?>
-                            <div class="nav-item">
-                                <a href='/console/dashboard' class="nav-link">Dashboard</a>
-                            </div>
-                            <div class="nav-item">
-                                <a href='/console/logout' class="nav-link">log out</a>
-                            </div>
-                        <?php elseif(Auth::check() && auth()->user()->user_role === 'user'): ?>
-                            <a href='/console/users/profile/<?= auth()->user()->id?>' class="nav-link">Profile</a>
-                            <a href='/console/logout' class="nav-link">Log out</a>
-                        <?php else:?>
-                            <div class="nav-item">
-                                <a href='/console/login' class="nav-link">Login</a>
-                            </div>
-                            <div class="nav-item">
-                                <a href='/console/users/add' class="nav-link">Create an account</a>
-                            </div>
-                        <?php endif;?>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="/">Dog Park Finder</a>
+                <ul class="navbar-nav me-auto mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="mb-2 mb-lg-0 navbar-nav">
+                    <?php if(Auth::check() && auth()->user()->user_role ==='admin'):?>
+                        <div class="nav-item">
+                            <a href='/console/dashboard' class="nav-link">Dashboard</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href='/console/logout' class="nav-link">log out</a>
+                        </div>
+                    <?php elseif(Auth::check() && auth()->user()->user_role === 'user'): ?>
+                        <a href='/console/users/profile/<?= auth()->user()->id?>' class="nav-link">Profile</a>
+                        <a href='/console/logout' class="nav-link">Log out</a>
+                    <?php else:?>
+                        <div class="nav-item">
+                            <a href='/console/login' class="nav-link">Login</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href='/console/users/add' class="nav-link">Create an account</a>
+                        </div>
+                    <?php endif;?>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div style="background-image: url({{ asset('parkresult.jpeg') }}); background-position:center center; background-size:cover; background-repeat: no-repeat; min-height:90vh;">
+        <div class="container-sm">
+            <section>
+            <div class="container-sm d-flex justify-content-center align-self-center">
+                        <div class="text-center search-box">
+                            <div>   
+                                <h1 class="h1">Search the dog parks in your region</h1>
+                                <form action="/parksresult" method="get" class="input-group">
+                                    <input type="text" name="location" id="location" placeholder="e.g. M6G 1L1 or M6G" class="form-control rounded">
+                                    <button type="submit" id="submitBtn" class="btn btn-primary">Search</button>
+                                </form>
+                            </div> 
+                        </div>
                     </div>
-                    
+            </section>
+
+            <section class="container-sm">
+                <h1>Search results: <?= $location?></h1>
+                <?php if(empty($parks)):?>
+                    <h2>No parks found nearby.</h2>
+                <?php endif;?>
+                <div class="text-center">
+                    <img src=<?=$map?> class="img-fluid" alt="map with current location and all the park results" style="max-height:600px; height:100%;">
                 </div>
-            </div>
-        </nav>
-
-    <section>
-    <div class="container-sm d-flex justify-content-center align-self-center">
-                <div class="text-center search-box">
-                    <div>   
-                        <h1 class="h1">Search the dog parks in your region</h1>
-                        <form action="/parksresult" method="get" class="input-group">
-                            <input type="text" name="location" id="location" placeholder="e.g. M6G 1L1 or M6G" class="form-control rounded">
-                            <button type="submit" id="submitBtn" class="btn btn-primary">Search</button>
-                        </form>
-                    </div> 
-                </div>
-            </div>
-    </section>
-
-    <section class="container-sm">
-        <h1>Search results: <?= $location?></h1>
-        <ul class="list-group">
-            <?php foreach($parks as $park):?>
-                <a href="/parks/<?= $park->id?>" class="list-group-item btn btn-outline-primary"><?= $park->park_name?></a>
-            <?php endforeach;?>
-        </ul>
-    </section>
-
+                <ul class="list-group">
+                    <?php $counter = 1; ?>
+                    <?php foreach($parks as $park):?>
+                        <a href="/parks/<?= $park->id?>" class="list-group-item btn btn-outline-primary"><?= $counter?>. <?= $park->park_name?></a>
+                        <?php $counter++;?>
+                    <?php endforeach;?>
+                </ul>
+            </section>
+        </div>
+    </div>
 
     <footer class="container-fluid">
         <p>©Copy right Dog Park Finder, 2023</p>
