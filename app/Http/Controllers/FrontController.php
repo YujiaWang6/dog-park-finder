@@ -16,47 +16,51 @@ class FrontController extends Controller
     {
         /*-- Get input location & setting url & key --*/
         $location = $request->input('location');
+        if($location!==null){
 
-        session(['user_location' => $location]);
+            session(['user_location' => $location]);
 
-        $rangeLati = 0.0707;
+            $rangeLati = 0.0707;
 
-        $rangeLongi = 0.1;
+            $rangeLongi = 0.1;
 
-        $key = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
+            $key = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
 
-        $geoUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key='.$key.'&location='.$location;
+            $geoUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key='.$key.'&location='.$location;
 
-        /*-- Access GeoAPI --*/
-        $response = Http::Get($geoUrl);
+            /*-- Access GeoAPI --*/
+            $response = Http::Get($geoUrl);
 
-        if($response->successful()){
-            $data = $response->json();
+            if($response->successful()){
+                $data = $response->json();
 
-            $latitude = $data['results'][0]['locations'][0]['latLng']['lat'];
-            $longitude = $data['results'][0]['locations'][0]['latLng']['lng'];
+                $latitude = $data['results'][0]['locations'][0]['latLng']['lat'];
+                $longitude = $data['results'][0]['locations'][0]['latLng']['lng'];
 
-            $parksInDB = Park::all();
+                $parksInDB = Park::all();
 
-            $parksResult = [];
+                $parksResult = [];
 
-            foreach($parksInDB as $park){
-                $parkLatitude = $park->latitude;
-                $parkLongitude = $park->longitude;
+                foreach($parksInDB as $park){
+                    $parkLatitude = $park->latitude;
+                    $parkLongitude = $park->longitude;
 
-                if(($parkLatitude>$latitude-$rangeLati)&&($parkLatitude<$latitude+$rangeLati)&&($parkLongitude>$longitude-$rangeLongi)&&($parkLongitude<$longitude+$rangeLongi)){
-                    $parksResult[] = $park;
+                    if(($parkLatitude>$latitude-$rangeLati)&&($parkLatitude<$latitude+$rangeLati)&&($parkLongitude>$longitude-$rangeLongi)&&($parkLongitude<$longitude+$rangeLongi)){
+                        $parksResult[] = $park;
+                    }
                 }
+
+                return view('front.parksresult', [
+                    'location' => $location,
+                    'parks' => $parksResult,
+
+                ]);
+
+            } else{
+                return view('error');
             }
-
-            return view('front.parksresult', [
-                'location' => $location,
-                'parks' => $parksResult,
-
-            ]);
-
         } else{
-            return view('error');
+            return back();
         }
 
     }

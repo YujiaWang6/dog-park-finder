@@ -58,33 +58,38 @@
             </div>
         </nav>
 
+        <section class="w3-padding">
+            <a href="/parksresult?location=<?= $searchedLocation?>" class="btn btn-outline-info">Back to Search Results</a>
+        </section>
         
-        <a href="/parksresult?location=<?= $searchedLocation?>">Back to Search Results</a>
-        <h1><?= $park->park_name?></h1>
-        <p><?= $park->city?></p>
-        <div>
-            <h2>Reports</h2>
-            <?php foreach($reports as $report):?>
-                <?= $report->report?>
-                <a href="/console/users/profile/<?= $report->user->id?>"><?= $report->user->user_name?></a>
-            <?php endforeach;?>
-        </div>
-        <div>
-            <h2>Reviews</h2>
-            <?php foreach($reviews as $review):?>
-                <?= $review->description?>
-                <?= $review->mark?>
-                <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
-            <?php endforeach;?>
-        </div>
-        <div>
-            <h2>Average Mark</h2>
+        <section class="container-sm">
+            <h1><?= $park->park_name?></h1>
+            <p><?= $park->city?></p>
+            <div>
+                <h2>Reports</h2>
+                <?php foreach($reports as $report):?>
+                    <?= $report->report?>
+                    <a href="/console/users/profile/<?= $report->user->id?>"><?= $report->user->user_name?></a>
+                <?php endforeach;?>
+            </div>
+            <div>
+                <h2>Reviews</h2>
+                <?php foreach($reviews as $review):?>
+                    <?= $review->description?>
+                    <?= $review->mark?>
+                    <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
+                <?php endforeach;?>
+            </div>
+            <div>
+                <h2>Average Mark</h2>
 
-                <?= $marks?>
+                    <?= $marks?>
 
-        </div>
-        <a href="/parks/<?= $park->id?>/report/add">Report safety issue</a>
-        <a href="/parks/<?= $park->id?>/review/add">Rate and Review</a>
+            </div>
+            <a href="/parks/<?= $park->id?>/report/add">Report safety issue</a>
+            <a href="/parks/<?= $park->id?>/review/add">Rate and Review</a>
+        </section>
+
 
         
     <footer class="container-fluid">

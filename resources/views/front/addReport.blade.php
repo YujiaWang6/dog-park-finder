@@ -72,11 +72,15 @@
 
     <section class="container-sm">
         <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
-            <a href="/console/reports/list">Back to Reports List</a>
-            <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+            <div class="mb-3">
+                <a href="/console/reports/list">Back to Reports List</a>
+            </div>
+            <div class="mb-3">
+                <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+            </div>
             <h1 class="h1">Create a New Report</h1>
         <?php else:?>
-            <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+            <a href="/parks/<?= $park->id?>" class="mb-3">Back to <?= $park->park_name?></a>
             <h1 class="h1">Write a safety report for <?= $park->park_name?></h1>
         <?php endif;?>
 

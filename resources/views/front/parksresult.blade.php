@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -54,17 +54,28 @@
         </nav>
 
     <section>
-        <form action="/parksresult" method="get">
-            <input type="text" name="location" id="location">
-            <button type="submit" id="submitBtn">Search</button>
-        </form>
+    <div class="container-sm d-flex justify-content-center align-self-center">
+                <div class="text-center search-box">
+                    <div>   
+                        <h1 class="h1">Search the dog parks in your region</h1>
+                        <form action="/parksresult" method="get" class="input-group">
+                            <input type="text" name="location" id="location" placeholder="e.g. M6G 1L1 or M6G" class="form-control rounded">
+                            <button type="submit" id="submitBtn" class="btn btn-primary">Search</button>
+                        </form>
+                    </div> 
+                </div>
+            </div>
     </section>
 
+    <section class="container-sm">
+        <h1>Search results: <?= $location?></h1>
+        <ul class="list-group">
+            <?php foreach($parks as $park):?>
+                <a href="/parks/<?= $park->id?>" class="list-group-item btn btn-outline-primary"><?= $park->park_name?></a>
+            <?php endforeach;?>
+        </ul>
+    </section>
 
-    <h1><?= $location?></h1>
-    <?php foreach($parks as $park):?>
-        <a href="/parks/<?= $park->id?>"><?= $park->park_name?></a>
-    <?php endforeach;?>
 
     <footer class="container-fluid">
         <p>©Copy right Dog Park Finder, 2023</p>

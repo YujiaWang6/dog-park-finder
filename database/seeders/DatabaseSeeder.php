@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $latitudes = [];
         $longitudes = [];
         $cities = [];
+        $information = [];
 
         foreach($xml->Location as $location){
             $locationFacilityNames = [];
@@ -47,6 +48,7 @@ class DatabaseSeeder extends Seeder
             $locationLatitudes = [];
             $locationLongitudes = [];
             $locationCities = [];
+            $locationInfo = [];
 
             foreach($location->Facilities->Facility as $facility){
                 $facilityDisplayName = (string)$facility->FacilityDisplayName;
@@ -58,6 +60,7 @@ class DatabaseSeeder extends Seeder
                     $locationLatitudes[] = (string)$location->Latitude;
                     $locationLongitudes[] = (string)$location->Longitude;
                     $locationCities[] = (string)$location->City;
+                    $locationInfo[] = (string)$location->Information;
                 }
             }
 
@@ -67,6 +70,7 @@ class DatabaseSeeder extends Seeder
             $latitudes = array_merge($latitudes, $locationLatitudes);
             $longitudes = array_merge($longitudes, $locationLongitudes);
             $cities = array_merge($cities, $locationCities);
+            $information = array_merge($information,$locationInfo);
         }
 
         for ($i = 0; $i < count($locationNames); $i++){
@@ -77,6 +81,7 @@ class DatabaseSeeder extends Seeder
                 'latitude' => $latitudes[$i],
                 'longitude' => $longitudes[$i],
                 'city' => $cities[$i],
+                'information' => $information[$i],
             ]);
         }
 

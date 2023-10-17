@@ -73,8 +73,12 @@
 
     <section class="container-sm">
         <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
-            <a href="/console/reviews/list">Back to Reviews List</a>
-            <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+            <div class="mb-3">
+                <a href="/console/reviews/list">Back to Reviews List</a>
+            </div>
+            <div class="mb-3">
+                <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+            </div>
             <h1 class="h1">Create a New Review</h1>
         <?php else:?>
             <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
