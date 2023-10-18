@@ -93,7 +93,10 @@
                         <h2>Safety Reports:</h2>
                         <?php foreach($reports as $report):?>
                             <div class="row mb-3">
-                                <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
+                                <div class="col-sm-2">
+                                    <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
+                                    <p class="mb-0"><?= $report->created_at?></p>
+                                </div>
                                 <p class="col-sm-10"><?= $report->report?></p>
                             </div>
 
@@ -105,7 +108,8 @@
                             <div class="row mb-3">
                                 <div class="col-sm-2">
                                     <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
-                                    <p>mark:<?= $review->mark?>/5</p>
+                                    <p class="mb-0">mark:<?= $review->mark?>/5</p>
+                                    <p><?=$review->created_at?></p>
                                 </div>
                                 <p class="col-sm-10"><?= $review->description?></p>
                             </div>
