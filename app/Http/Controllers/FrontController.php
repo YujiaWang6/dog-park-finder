@@ -90,6 +90,7 @@ class FrontController extends Controller
         $reports = [];
         $reviews = [];
         $users = [];
+  
 
         $markTotal=0;
         $finalMark=null;
@@ -104,20 +105,22 @@ class FrontController extends Controller
         }
 
         $allReviews = Review::all();
+        
+        
 
         foreach($allReviews as $review){
             $parkInReview = $review->park_id;
             if($parkInReview === $park->id){
                 $reviews[] = $review;
-
-                foreach($reviews as $reviewWithMark){
-                    $eachMark = $reviewWithMark->mark;
-                    $markTotal =+ $eachMark;
-                }
+ 
             }
         }
 
         if(count($reviews)>0){
+            foreach($reviews as $review){
+                $eachMark = $review->mark;
+                $markTotal +=$eachMark;
+            }
             $finalMark = round($markTotal/count($reviews),1);
         }
 

@@ -58,7 +58,6 @@
             </div>
         </nav>
         
-
         <div style="background-image: url({{ asset('parkdetail.jpeg') }});background-position:center center; background-size:cover; background-repeat: no-repeat; min-height:90vh;">
             <div style="background-color:rgb(255,255,255,0.5); min-height:90vh;">
                 <section class="w3-padding">
