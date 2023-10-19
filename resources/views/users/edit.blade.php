@@ -71,89 +71,91 @@
     </section>
 
     <section class="container-sm">
-        <?php if(auth()->user()->user_role==='admin'):?>
-            <a href="/console/users/list">Back to Users List</a>
-        <?php endif;?>
-        <h1 class="h1">Update <?= $user->user_name?></h1>
-        <form method="post" action="/console/users/edit/<?= $user->id?>" novalidation>
-            <?= csrf_field()?>
-            <div class="mb-3">
-                <label for="user_name" class="form-label">User Name<sup>*</sup>:</label>
-                <input type="text" name="user_name" id="user_name" class="form-control" value="<?=old('user_name', $user->user_name)?>">
+        <div class="container-sm" style="max-width:700px;">
 
-                <?php if($errors->first('user_name')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('user_name');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email<sup>*</sup>:</label>
-                <input type="text" name="email" id="email" class="form-control" value="<?=old('email', $user->email)?>">
-
-                <?php if($errors->first('email')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('email');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Password<sup>*</sup>:</label>
-                <input type="password" name="password" id="password" class="form-control">
-
-                <?php if($errors->first('password')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('password');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="breed" class="form-label">Breed:</label>
-                <input type="text" name="breed" id="breed" class="form-control" value="<?=old('breed', $user->breed)?>">
-
-                <?php if($errors->first('breed')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('breed');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <div class="mb-3">
-                <label for="age" class="form-label">Age:</label>
-                <input type="text" name="age" id="age" class="form-control" value="<?=old('age', $user->age)?>">
-
-                <?php if($errors->first('age')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('age');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <?php if(auth()->user()->user_role === 'admin'):?>
+            <?php if(auth()->user()->user_role==='admin'):?>
+                <a href="/console/users/list">Back to Users List</a>
+            <?php endif;?>
+            <h1 class="h1">Update <?= $user->user_name?></h1>
+            <form method="post" action="/console/users/edit/<?= $user->id?>" novalidation>
+                <?= csrf_field()?>
                 <div class="mb-3">
-                    <label for="user_role" class="form-label">User Role:</label>
-                    <input type="radio" name="user_role" id="admin" value="admin" <?= old('user_role', $user->user_role) === 'admin' ? 'checked' : '' ?>>
-                    <label for="admin">Admin</label>
-                    <input type="radio" name="user_role" id="user" value="user" <?= old('user_role', $user->user_role) === 'user' ? 'checked' : ''?>>
-                    <label for="user">User</label>
+                    <label for="user_name" class="form-label">User Name<sup>*</sup>:</label>
+                    <input type="text" name="user_name" id="user_name" class="form-control" value="<?=old('user_name', $user->user_name)?>">
 
-                    <?php if($errors->first('user_role')):?>
+                    <?php if($errors->first('user_name')):?>
                         <span class="form-text w3-text-red">
-                            <?= $errors->first('user_role');?>
+                            <?= $errors->first('user_name');?>
                         </span>
                     <?php endif;?>
 
                 </div>
-            <?php endif;?>
-            <button type="submit" class="btn btn-primary">Update</button>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email<sup>*</sup>:</label>
+                    <input type="text" name="email" id="email" class="form-control" value="<?=old('email', $user->email)?>">
 
-        </form>
+                    <?php if($errors->first('email')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('email');?>
+                        </span>
+                    <?php endif;?>
 
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password<sup>*</sup>:</label>
+                    <input type="password" name="password" id="password" class="form-control">
+
+                    <?php if($errors->first('password')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('password');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="breed" class="form-label">Breed:</label>
+                    <input type="text" name="breed" id="breed" class="form-control" value="<?=old('breed', $user->breed)?>">
+
+                    <?php if($errors->first('breed')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('breed');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="text" name="age" id="age" class="form-control" value="<?=old('age', $user->age)?>">
+
+                    <?php if($errors->first('age')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('age');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+                <?php if(auth()->user()->user_role === 'admin'):?>
+                    <div class="mb-3">
+                        <label for="user_role" class="form-label">User Role:</label>
+                        <input type="radio" name="user_role" id="admin" value="admin" <?= old('user_role', $user->user_role) === 'admin' ? 'checked' : '' ?>>
+                        <label for="admin">Admin</label>
+                        <input type="radio" name="user_role" id="user" value="user" <?= old('user_role', $user->user_role) === 'user' ? 'checked' : ''?>>
+                        <label for="user">User</label>
+
+                        <?php if($errors->first('user_role')):?>
+                            <span class="form-text w3-text-red">
+                                <?= $errors->first('user_role');?>
+                            </span>
+                        <?php endif;?>
+
+                    </div>
+                <?php endif;?>
+                <button type="submit" class="btn btn-primary">Update</button>
+
+            </form>
+        </div>
     </section>
 
     <footer class="container-fluid">

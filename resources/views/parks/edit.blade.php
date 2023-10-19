@@ -72,92 +72,93 @@
     </section>
 
     <section class="container-sm">
-        <a href="/console/parks/list">Back to Parks List</a>
-        <h1 class="h1">Update <?= $park->park_name?></h1>
-        <form method="post" action="/console/parks/edit/<?= $park->id?>" novalidation>
-            <?= csrf_field()?>
-            <div class="mb-3">
-                <label for="park_name" class="form-label">Park Name<sup>*</sup>:</label>
-                <input type="text" name="park_name" id="park_name" class="form-control" value="<?=old('park_name', $park->park_name)?>">
+        <div class="container-sm" style="max-width:700px;">
+            <a href="/console/parks/list">Back to Parks List</a>
+            <h1 class="h1">Update <?= $park->park_name?></h1>
+            <form method="post" action="/console/parks/edit/<?= $park->id?>" novalidation>
+                <?= csrf_field()?>
+                <div class="mb-3">
+                    <label for="park_name" class="form-label">Park Name<sup>*</sup>:</label>
+                    <input type="text" name="park_name" id="park_name" class="form-control" value="<?=old('park_name', $park->park_name)?>">
 
-                <?php if($errors->first('park_name')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('park_name');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('park_name')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('park_name');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Addres<sup>*</sup>:</label>
-                <input type="text" name="address" id="address" class="form-control" value="<?=old('address', $park->address)?>">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Addres<sup>*</sup>:</label>
+                    <input type="text" name="address" id="address" class="form-control" value="<?=old('address', $park->address)?>">
 
-                <?php if($errors->first('address')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('address');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('address')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('address');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
+                </div>
 
-            <div class="mb-3">
-                <label for="postcode" class="form-label">Postcode<sup>*</sup>:</label>
-                <input type="text" name="postcode" id="postcode" class="form-control" value="<?=old('postcode', $park->postcode)?>">
+                <div class="mb-3">
+                    <label for="postcode" class="form-label">Postcode<sup>*</sup>:</label>
+                    <input type="text" name="postcode" id="postcode" class="form-control" value="<?=old('postcode', $park->postcode)?>">
 
-                <?php if($errors->first('postcode')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('postcode');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('postcode')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('postcode');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="information" class="form-label">Information:</label>
-                <textarea name="information" id="information" class="form-control"><?=old('information', $park->information)?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="information" class="form-label">Information:</label>
+                    <textarea name="information" id="information" class="form-control"><?=old('information', $park->information)?></textarea>
 
-                <?php if($errors->first('information')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('information');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('information')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('information');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="latitude" class="form-label">Latitude:</label>
-                <input type="text" name="latitude" id="latitude" class="form-control" value="<?=old('latitude', $park->latitude)?>">
+                </div>
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">Latitude:</label>
+                    <input type="text" name="latitude" id="latitude" class="form-control" value="<?=old('latitude', $park->latitude)?>">
 
-                <?php if($errors->first('latitude')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('latitude');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('latitude')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('latitude');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="longitude" class="form-label">Longitude:</label>
-                <input type="text" name="longitude" id="longitude" class="form-control" value="<?=old('longitude', $park->longitude)?>">
+                </div>
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">Longitude:</label>
+                    <input type="text" name="longitude" id="longitude" class="form-control" value="<?=old('longitude', $park->longitude)?>">
 
-                <?php if($errors->first('longitude')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('longitude');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('longitude')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('longitude');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="city" class="form-label">City:</label>
-                <input type="text" name="city" id="city" class="form-control" value="<?=old('city', $park->city)?>">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City:</label>
+                    <input type="text" name="city" id="city" class="form-control" value="<?=old('city', $park->city)?>">
 
-                <?php if($errors->first('city')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('city');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('city')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('city');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
 
-        </form>
-
+            </form>
+        </div>
     </section>
         
    

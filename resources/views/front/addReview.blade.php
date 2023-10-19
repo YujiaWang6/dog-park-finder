@@ -72,48 +72,49 @@
     </section>
 
     <section class="container-sm">
-        <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
-            <div class="mb-3">
-                <a href="/console/reviews/list">Back to Reviews List</a>
-            </div>
-            <div class="mb-3">
+        <div class="container-sm" style="max-width:700px;">
+            <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
+                <div class="mb-3">
+                    <a href="/console/reviews/list">Back to Reviews List</a>
+                </div>
+                <div class="mb-3">
+                    <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+                </div>
+                <h1 class="h1">Create a New Review</h1>
+            <?php else:?>
                 <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
-            </div>
-            <h1 class="h1">Create a New Review</h1>
-        <?php else:?>
-            <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
-            <h1 class="h1">Rate and Review for <?= $park->park_name?></h1>
-        <?php endif;?>
-        <form method="post" action="/parks/<?= $park->id?>/review/add" novalidation>
-            <?= csrf_field()?>
+                <h1 class="h1">Rate and Review for <?= $park->park_name?></h1>
+            <?php endif;?>
+            <form method="post" action="/parks/<?= $park->id?>/review/add" novalidation>
+                <?= csrf_field()?>
 
-            <div class="mb-3">
-                <label for="mark" class="form-label">Rate<sup>*</sup>:</label>
-                <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark')?>" min="1" max="5">
+                <div class="mb-3">
+                    <label for="mark" class="form-label">Rate<sup>*</sup>:</label>
+                    <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark')?>" min="1" max="5">
 
-                <?php if($errors->first('mark')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('mark');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('mark')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('mark');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Review:</label>
-                <textarea name="description" id="description" class="form-control"><?=old('description')?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Review:</label>
+                    <textarea name="description" id="description" class="form-control"><?=old('description')?></textarea>
 
-                <?php if($errors->first('description')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('description');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('description')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('description');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-        </form>
-
+            </form>
+        </div>
     </section>
         
     <footer class="container-fluid">

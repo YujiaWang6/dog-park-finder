@@ -70,21 +70,22 @@
                     </div>
             </section>
 
-            <section class="container-sm">
-                <h1>Search results: <?= $location?></h1>
-                <?php if(empty($parks)):?>
-                    <h2>No parks found nearby.</h2>
-                <?php endif;?>
-                <div class="text-center">
-                    <img src=<?=$map?> class="img-fluid" alt="map with current location and all the park results" style="max-height:600px; height:100%;">
-                </div>
-                <ul class="list-group">
-                    <?php $counter = 1; ?>
-                    <?php foreach($parks as $park):?>
-                        <a href="/parks/<?= $park->id?>" class="list-group-item btn btn-outline-primary"><?= $counter?>. <?= $park->park_name?></a>
-                        <?php $counter++;?>
-                    <?php endforeach;?>
-                </ul>
+            <section class="container-sm">                    
+                    <h1>Search results: <?= $location?></h1>
+                    <?php if(empty($parks)):?>
+                        <h2>No parks found nearby.</h2>
+                    <?php endif;?>
+                    <div class="text-center">
+                        <img src=<?=$map?> class="img-fluid" alt="map with current location and all the park results" style="max-height:600px; height:100%;">
+                    </div>
+                    <ul class="list-group">
+                        <?php $counter = 1; ?>
+                        <?php foreach($parks as $park):?>
+                            <a href="/parks/<?= $park->id?>" class="list-group-item btn btn-outline-primary"><?= $counter?>. <?= $park->park_name?></a>
+                            <?php $counter++;?>
+                        <?php endforeach;?>
+                    </ul>
+
             </section>
         </div>
     </div>

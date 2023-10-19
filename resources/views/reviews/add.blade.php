@@ -72,77 +72,78 @@
     </section>
 
     <section class="container-sm">
-        <a href="/console/reviews/list">Back to Reviews List</a>
-        <h1 class="h1">Create a New Review</h1>
-        <form method="post" action="/console/reviews/add" novalidation>
-            <?= csrf_field()?>
-            <div class="mb-3">
-                <label for="user_id" class="form-label">User<sup>*</sup>:</label>
-                <select name="user_id" id="user_id" class="form-control">
-                    <option disabled selected>Select the User</option>
-                    <?php foreach($users as $user): ?>
-                        <option value="<?= $user->id?>" <?= $user->id == old('user_id') ? 'selected' : ''?>>
-                            <?= $user->user_name?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+        <div class="container-sm" style="max-width:700px;">
+            <a href="/console/reviews/list">Back to Reviews List</a>
+            <h1 class="h1">Create a New Review</h1>
+            <form method="post" action="/console/reviews/add" novalidation>
+                <?= csrf_field()?>
+                <div class="mb-3">
+                    <label for="user_id" class="form-label">User<sup>*</sup>:</label>
+                    <select name="user_id" id="user_id" class="form-control">
+                        <option disabled selected>Select the User</option>
+                        <?php foreach($users as $user): ?>
+                            <option value="<?= $user->id?>" <?= $user->id == old('user_id') ? 'selected' : ''?>>
+                                <?= $user->user_name?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    
+                    <?php if($errors->first('user_id')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('user_id');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+                <div class="mb-3">
+                    <label for="park_id" class="form-label">Park<sup>*</sup>:</label>
+                    <select name="park_id" id="park_id" class="form-control">
+                        <option disabled selected>Select the Park</option>
+                        <?php foreach($parks as $park): ?>
+                            <option value="<?= $park->id?>" <?= $park->id == old('park_id') ? 'selected' : ''?>>
+                                <?= $park->park_name?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <?php if($errors->first('park_id')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('park_id');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="mark" class="form-label">Rate<sup>*</sup>:</label>
+                    <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark')?>" min="1" max="5">
+
+                    <?php if($errors->first('mark')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('mark');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Review:</label>
+                    <textarea name="description" id="description" class="form-control"><?=old('description')?></textarea>
+
+                    <?php if($errors->first('description')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('description');?>
+                        </span>
+                    <?php endif;?>
+
+                </div>
                 
-                <?php if($errors->first('user_id')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('user_id');?>
-                    </span>
-                <?php endif;?>
+                <button type="submit" class="btn btn-primary">Create</button>
 
-            </div>
-            <div class="mb-3">
-                <label for="park_id" class="form-label">Park<sup>*</sup>:</label>
-                <select name="park_id" id="park_id" class="form-control">
-                    <option disabled selected>Select the Park</option>
-                    <?php foreach($parks as $park): ?>
-                        <option value="<?= $park->id?>" <?= $park->id == old('park_id') ? 'selected' : ''?>>
-                            <?= $park->park_name?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <?php if($errors->first('park_id')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('park_id');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="mark" class="form-label">Rate<sup>*</sup>:</label>
-                <input type="number" name="mark" id="mark" class="form-control" value="<?=old('mark')?>" min="1" max="5">
-
-                <?php if($errors->first('mark')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('mark');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Review:</label>
-                <textarea name="description" id="description" class="form-control"><?=old('description')?></textarea>
-
-                <?php if($errors->first('description')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('description');?>
-                    </span>
-                <?php endif;?>
-
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Create</button>
-
-        </form>
-
+            </form>
+        </div>
     </section>
         
-<    <footer class="container-fluid">
+    <footer class="container-fluid">
         <p>©Copy right Dog Park Finder, 2023</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

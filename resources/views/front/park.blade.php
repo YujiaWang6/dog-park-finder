@@ -91,7 +91,7 @@
                     <div class="mb-5 mt-3">
                         <h2>Safety Reports:</h2>
                         <?php foreach($reports as $report):?>
-                            <div class="row mb-3">
+                            <div class="row mb-3 border-bottom">
                                 <div class="col-sm-2">
                                     <a href="/console/users/profile/<?= $report->user->id?>" class="col-sm-2"><?= $report->user->user_name?></a>
                                     <p class="mb-0"><?= $report->created_at?></p>
@@ -104,7 +104,7 @@
                     <div class="mb-5">
                         <h2>Reviews:</h2>
                         <?php foreach($reviews as $review):?>
-                            <div class="row mb-3">
+                            <div class="row mb-3 border-bottom">
                                 <div class="col-sm-2">
                                     <a href="/console/users/profile/<?= $review->user->id?>"><?= $review->user->user_name?></a>
                                     <p class="mb-0">mark:<?= $review->mark?>/5</p>

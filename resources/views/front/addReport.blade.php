@@ -71,38 +71,39 @@
     </section>
 
     <section class="container-sm">
-        <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
-            <div class="mb-3">
-                <a href="/console/reports/list">Back to Reports List</a>
-            </div>
-            <div class="mb-3">
-                <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
-            </div>
-            <h1 class="h1">Create a New Report</h1>
-        <?php else:?>
-            <a href="/parks/<?= $park->id?>" class="mb-3">Back to <?= $park->park_name?></a>
-            <h1 class="h1">Write a safety report for <?= $park->park_name?></h1>
-        <?php endif;?>
+        <div class="container-sm" style="max-width:700px;">
+            <?php if(Auth::check()&&auth()->user()->user_role === 'admin'):?>
+                <div class="mb-3">
+                    <a href="/console/reports/list">Back to Reports List</a>
+                </div>
+                <div class="mb-3">
+                    <a href="/parks/<?= $park->id?>">Back to <?= $park->park_name?></a>
+                </div>
+                <h1 class="h1">Create a New Report</h1>
+            <?php else:?>
+                <a href="/parks/<?= $park->id?>" class="mb-3">Back to <?= $park->park_name?></a>
+                <h1 class="h1">Write a safety report for <?= $park->park_name?></h1>
+            <?php endif;?>
 
-        <form method="post" action="/parks/<?= $park->id?>/report/add" novalidation>
-            <?= csrf_field()?>
-            
-            <div class="mb-3">
-                <label for="report" class="form-label">Report<sup>*</sup>:</label>
-                <textarea name="report" id="report" class="form-control"><?=old('report')?></textarea>
+            <form method="post" action="/parks/<?= $park->id?>/report/add" novalidation>
+                <?= csrf_field()?>
+                
+                <div class="mb-3">
+                    <label for="report" class="form-label">Report<sup>*</sup>:</label>
+                    <textarea name="report" id="report" class="form-control"><?=old('report')?></textarea>
 
-                <?php if($errors->first('report')):?>
-                    <span class="form-text w3-text-red">
-                        <?= $errors->first('report');?>
-                    </span>
-                <?php endif;?>
+                    <?php if($errors->first('report')):?>
+                        <span class="form-text w3-text-red">
+                            <?= $errors->first('report');?>
+                        </span>
+                    <?php endif;?>
 
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Create</button>
 
-        </form>
-
+            </form>
+        </div>
     </section>
         
     <footer class="container-fluid">
