@@ -24,7 +24,7 @@ class FrontController extends Controller
 
             $rangeLongi = 0.1;
 
-            $key = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
+            $key = 'CbzxGX6pNYCAEQp4Q5Un7t07OkIdwXJP';
 
             $geoUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key='.$key.'&location='.$location;
 
@@ -58,7 +58,7 @@ class FrontController extends Controller
 
                     $filtedParksUrl .= '||' . $filtedParkLati . ',' . $filtedParkLongi;
                 }
-                $mapKey = '9jKWTSTaq7k8VEAkGWIGdz0jNtjl2m6F';
+                $mapKey = 'CbzxGX6pNYCAEQp4Q5Un7t07OkIdwXJP';
                 $mapUrl = 'https://www.mapquestapi.com/staticmap/v5/map?locations='.$filtedParksUrl.'||'.$location.'|marker-lg-D51A1A-A20000&size=@2x&key='.$mapKey.'&defaultMarker=marker-num';
 
                 return view('front.parksresult', [
